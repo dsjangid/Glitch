@@ -6462,11 +6462,37 @@
     }
   }
 
+  /* ============================================================
+     15. COMPREHENSIVE MOBILE & TOUCH OPTIMIZATION LAYER
+     ============================================================ */
+  * {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    #cursorDot, #cursorRing {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    * {
+      cursor: auto !important;
+    }
+    .magnetic-item {
+      transform: none !important;
+    }
+    .spotlight-card:hover {
+      transform: none !important;
+    }
+  }
+
   @media (max-width: 960px) {
-    /* Viewport & Body */
+    /* Global Viewport & Container Reset */
     html, body {
       overflow-x: hidden !important;
       max-width: 100vw !important;
+      width: 100% !important;
+      position: relative !important;
     }
 
     /* Navbar */
@@ -6544,6 +6570,7 @@
       z-index: 9999 !important;
       border-top: 1px solid rgba(162, 58, 82, 0.4) !important;
       overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
     }
     .nav-link-list.is-open .nav-item {
       font-family: var(--f-display) !important;
@@ -6554,13 +6581,14 @@
       padding-bottom: 0.8rem !important;
     }
 
-    /* Hero Section */
+    /* 00: Hero Section */
     .hero-block-stage {
       padding: 1.5rem 1rem 0 !important;
       min-height: auto !important;
       display: block !important;
       width: 100% !important;
       box-sizing: border-box !important;
+      overflow: hidden !important;
     }
     .hero-layout-grid {
       display: flex !important;
@@ -6620,6 +6648,7 @@
       align-items: center !important;
       position: relative !important;
       margin-top: 1rem !important;
+      overflow: hidden !important;
     }
     .hero-cyborg-render-img {
       max-height: 280px !important;
@@ -6633,7 +6662,7 @@
       left: 50% !important;
     }
 
-    /* All Standard Sections */
+    /* All Standard Section Containers */
     .section-block {
       display: flex !important;
       flex-direction: column !important;
@@ -6642,9 +6671,12 @@
       max-width: 100vw !important;
       box-sizing: border-box !important;
       gap: 1.5rem !important;
+      overflow: hidden !important;
     }
     .sec-num-box,
+    .sec4-left-gutter,
     .sec4-right-gutter,
+    .sec4-watermark-huge,
     .section-watermark-bg {
       display: none !important;
     }
@@ -6665,14 +6697,27 @@
       gap: 0.8rem !important;
     }
 
-    /* Bento Grids */
+    /* 02: About Section */
     .about-bento-grid {
       grid-template-columns: 1fr !important;
       gap: 1rem !important;
+      width: 100% !important;
     }
+    .about-main-card,
+    .about-pillar-box {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .about-stat-strip {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.5rem !important;
+    }
+
+    /* 03: Services Section */
     .services-stage-layout {
       grid-template-columns: 1fr !important;
       gap: 1.5rem !important;
+      width: 100% !important;
     }
     .svc-operative-visual {
       display: none !important;
@@ -6680,41 +6725,168 @@
     .svc-cards-grid {
       grid-template-columns: 1fr !important;
       gap: 1rem !important;
+      width: 100% !important;
     }
+    .svc-chamfer-card {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .svc-card-meta-bar {
+      flex-wrap: wrap !important;
+      gap: 0.3rem !important;
+    }
+
+    /* 04: Platforms / Stack Section */
     .platforms-five-grid {
       grid-template-columns: 1fr 1fr !important;
       gap: 0.8rem !important;
+      width: 100% !important;
     }
+    .platform-pillar {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 05: Why Work With Me Section */
     .why-bento-grid {
       grid-template-columns: 1fr !important;
       gap: 1rem !important;
+      width: 100% !important;
     }
+    .why-card {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 06: Process Section */
     .process-flow-five {
       grid-template-columns: 1fr !important;
       gap: 1rem !important;
+      width: 100% !important;
     }
+    .process-node {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 07: Telemetry / Stats Section */
     .sec4-arena-body {
-      grid-template-columns: 1fr !important;
-      gap: 1.5rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.8rem !important;
+      width: 100% !important;
     }
-    .sec4-stats-cluster-4x4 {
+    .sec4-main-arena {
+      width: 100% !important;
+      padding: 0 !important;
+    }
+    .sec4-headline {
+      font-size: clamp(2rem, 8.5vw, 2.8rem) !important;
+      line-height: 1.05 !important;
+      margin-bottom: 1rem !important;
+    }
+    .tv-metrics-matrix {
       grid-template-columns: 1fr 1fr !important;
       gap: 0.8rem !important;
+      width: 100% !important;
     }
+    .tv-metric-cell {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .tv-center-visual {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      max-height: 260px !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .tv-kneeling-img {
+      max-height: 240px !important;
+      width: auto !important;
+      object-fit: contain !important;
+    }
+    .tv-hud-reticle-bg {
+      width: 240px !important;
+      height: 240px !important;
+    }
+    .tv-right-network-col {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 08: Cases / Selected Work */
     .cases-grid {
       grid-template-columns: 1fr !important;
       gap: 1.5rem !important;
+      width: 100% !important;
     }
+    .case-card {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .case-spec-row {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: space-between !important;
+      gap: 0.3rem !important;
+    }
+    .case-spec-row .spec-v {
+      word-break: break-all !important;
+    }
+
+    /* 09: FAQ Section */
+    .faq-list-accordion {
+      width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.8rem !important;
+    }
+    .faq-item {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .faq-trigger-btn {
+      width: 100% !important;
+      padding: 1rem !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      text-align: left !important;
+      gap: 0.8rem !important;
+    }
+
+    /* 10: Final CTA Section */
     .cta-full-stage-grid {
       grid-template-columns: 1fr !important;
       gap: 1.5rem !important;
+      width: 100% !important;
     }
-    .cta-operative-anchor {
+    .cta-operative-anchor,
+    .cta-radar-reticle-bg {
       display: none !important;
     }
+    .cta-massive-headline {
+      font-size: clamp(2rem, 8.5vw, 3rem) !important;
+      line-height: 1.05 !important;
+    }
+    .cta-spec-box {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 11: Contact Intake Section */
     .intake-terminal-grid {
       grid-template-columns: 1fr !important;
       gap: 1.5rem !important;
+      width: 100% !important;
+    }
+    .intake-form-box {
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 1.4rem 1rem !important;
     }
     .intake-form-grid {
       grid-template-columns: 1fr !important;
@@ -6723,9 +6895,38 @@
     .form-group-cell.full-w {
       grid-column: span 1 !important;
     }
+    .intake-status-sidebar {
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 1.4rem 1rem !important;
+    }
+    .live-telemetry-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      gap: 0.5rem !important;
+      flex-wrap: wrap !important;
+    }
+
+    /* Footer */
+    .footer-inner-wrap {
+      padding: 3rem 1rem 2rem !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      box-sizing: border-box !important;
+    }
     .footer-top-grid {
       grid-template-columns: 1fr !important;
       gap: 1.8rem !important;
+      width: 100% !important;
+    }
+    .footer-col-block {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .footer-copyright-bar {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.8rem !important;
     }
 
     /* Mobile Inputs (Prevent iOS Safari Auto-Zoom) */
@@ -6737,20 +6938,25 @@
     .field-textarea {
       font-size: 16px !important;
       padding: 0.85rem 1rem !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
     }
 
-    /* Modals & Gallery on Mobile */
+    /* Modals & Slide Gallery on Mobile */
     .modal-backdrop-layer {
       padding: 0.75rem !important;
     }
     .modal-panel-window {
-      padding: 1.5rem 1.2rem !important;
-      max-width: 95vw !important;
+      padding: 1.5rem 1.1rem !important;
+      max-width: 94vw !important;
+      width: 94vw !important;
       max-height: 90vh !important;
       overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      box-sizing: border-box !important;
     }
     .modal-panel-window.is-gallery-window {
-      padding: 1.2rem 0.9rem !important;
+      padding: 1.2rem 0.85rem !important;
     }
     .gallery-hud-header {
       margin-bottom: 0.8rem !important;
@@ -6806,8 +7012,12 @@
     .platforms-five-grid {
       grid-template-columns: 1fr !important;
     }
-    .sec4-stats-cluster-4x4 {
+    .tv-metrics-matrix {
       grid-template-columns: 1fr !important;
+    }
+    .about-stat-strip {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem !important;
     }
   }
 
@@ -8581,30 +8791,43 @@
     });
   }
 
-  // 10. Minimalist 2-Second Futuristic Preloader
+  // 10. Minimalist Fast Futuristic Preloader
   const preloader = document.getElementById('sitePreloader');
   const preloaderFill = document.getElementById('preloaderFill');
   const preloaderCounter = document.getElementById('preloaderCounter');
 
   if (preloader) {
-    if (sessionStorage.getItem('glitch_preloaded_session')) {
+    let alreadyPreloaded = false;
+    try {
+      alreadyPreloaded = !!sessionStorage.getItem('glitch_preloaded_session');
+    } catch(e) {
+      alreadyPreloaded = false;
+    }
+
+    const dismissPreloader = () => {
+      preloader.classList.add('preloader-hidden');
+      try {
+        sessionStorage.setItem('glitch_preloaded_session', 'true');
+      } catch(e) {}
+    };
+
+    preloader.addEventListener('click', dismissPreloader);
+
+    if (alreadyPreloaded) {
       preloader.classList.add('preloader-hidden');
     } else {
       let progressVal = 0;
       const interval = setInterval(() => {
-        progressVal += 2.5;
+        progressVal += 6;
         if (progressVal > 100) progressVal = 100;
         if (preloaderFill) preloaderFill.style.width = progressVal + '%';
         if (preloaderCounter) preloaderCounter.innerText = Math.floor(progressVal) + '%';
 
         if (progressVal >= 100) {
           clearInterval(interval);
-          setTimeout(() => {
-            preloader.classList.add('preloader-hidden');
-            sessionStorage.setItem('glitch_preloaded_session', 'true');
-          }, 300);
+          setTimeout(dismissPreloader, 150);
         }
-      }, 45);
+      }, 20);
     }
   }
 
@@ -8841,28 +9064,39 @@
     });
   }
 
-  // Touch Swipe gestures for Mobile Slide Gallery
+  // Touch Swipe gestures for Mobile Slide Gallery (Accidental scroll protection)
   let touchStartX = 0;
+  let touchStartY = 0;
   let touchEndX = 0;
+  let touchEndY = 0;
   const galleryStage = document.getElementById('galleryStage');
   if (galleryStage) {
     galleryStage.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+      if (e.touches && e.touches.length > 0) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
     }, { passive: true });
     
     galleryStage.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 40) {
-        const total = projectGalleryData[currentProjectKey].slides.length;
-        if (diff > 0) {
-          // Swiped Left -> Next Slide
-          currentSlideIndex = (currentSlideIndex + 1) % total;
-        } else {
-          // Swiped Right -> Previous Slide
-          currentSlideIndex = (currentSlideIndex - 1 + total) % total;
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        touchEndX = e.changedTouches[0].clientX;
+        touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchStartX - touchEndX;
+        const diffY = touchStartY - touchEndY;
+        
+        // Strict horizontal swipe detection: horizontal movement must exceed vertical by 1.4x
+        if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+          const total = projectGalleryData[currentProjectKey].slides.length;
+          if (diffX > 0) {
+            // Swiped Left -> Next Slide
+            currentSlideIndex = (currentSlideIndex + 1) % total;
+          } else {
+            // Swiped Right -> Previous Slide
+            currentSlideIndex = (currentSlideIndex - 1 + total) % total;
+          }
+          renderGallerySlide();
         }
-        renderGallerySlide();
       }
     }, { passive: true });
   }
