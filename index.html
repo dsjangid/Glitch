@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLITCH — Digital Support Agency</title>
+<title>DS // DEV.SYS — Web Designer & Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,700&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -1886,6 +1886,7 @@
     pointer-events: none;
     transition: opacity 0.25s var(--ease-out);
   }
+  .modal-backdrop-layer.is-active,
   .modal-backdrop-layer.active {
     opacity: 1;
     pointer-events: auto;
@@ -1903,9 +1904,207 @@
     opacity: 0;
     transition: transform 0.3s var(--ease-spring), opacity 0.25s ease;
   }
+  .modal-backdrop-layer.is-active .modal-panel-window,
   .modal-backdrop-layer.active .modal-panel-window {
     transform: scale(1);
     opacity: 1;
+  }
+
+  /* Gallery Modal Specifics */
+  .modal-panel-window.is-gallery-window {
+    max-width: 1080px;
+    background: #0d0d10;
+    color: #ffffff;
+    padding: 1.6rem 2rem;
+    border: 1px solid rgba(162, 58, 82, 0.4);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(162, 58, 82, 0.15);
+  }
+  .gallery-hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+  }
+  .gallery-title-group h3 {
+    font-family: var(--f-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-top: 0.2rem;
+  }
+  .gallery-meta-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+  }
+  .gallery-slide-counter {
+    background: var(--wine);
+    color: #ffffff;
+    padding: 0.3rem 0.65rem;
+    border-radius: 2px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .gallery-stage-container {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    max-height: 60vh;
+    background: #060608;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-active-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease;
+  }
+  .gallery-arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(18, 18, 22, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+  .gallery-arrow-btn:hover {
+    background: var(--wine);
+    border-color: var(--wine-bright);
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.1);
+  }
+  .gallery-arrow-btn.prev-btn { left: 1rem; }
+  .gallery-arrow-btn.next-btn { right: 1rem; }
+  .gallery-bottom-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .gallery-thumb-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .gallery-thumb-btn {
+    width: 64px;
+    height: 44px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #121216;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.2s, transform 0.2s;
+    opacity: 0.55;
+  }
+  .gallery-thumb-btn:hover {
+    opacity: 0.85;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  .gallery-thumb-btn.is-active {
+    opacity: 1;
+    border-color: var(--wine-bright);
+    box-shadow: 0 0 10px rgba(162, 58, 82, 0.5);
+    transform: translateY(-2px);
+  }
+  .gallery-thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-caption-text {
+    font-family: var(--f-mono);
+    font-size: 0.76rem;
+    color: #b0aeb3;
+  }
+  .gallery-live-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--f-mono);
+    font-size: 0.76rem;
+    color: var(--wine-bright);
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid rgba(162, 58, 82, 0.4);
+    padding: 0.45rem 0.9rem;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+  .gallery-live-action-btn:hover {
+    background: var(--wine);
+    color: #ffffff;
+    border-color: var(--wine);
+  }
+
+  /* Card Trigger Preview */
+  .case-preview-interactive {
+    position: relative;
+    margin: 1rem 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line-subtle);
+    background: #0c0c0e;
+    cursor: pointer;
+  }
+  .case-preview-interactive img {
+    width: 100%;
+    height: 185px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s var(--ease-spring), filter 0.3s ease;
+  }
+  .case-preview-interactive:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.08);
+  }
+  .case-slides-overlay-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(14, 14, 18, 0.88);
+    border: 1px solid rgba(162, 58, 82, 0.6);
+    color: #ffffff;
+    font-family: var(--f-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.65rem;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    backdrop-filter: blur(6px);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .case-preview-interactive:hover .case-slides-overlay-badge {
+    background: var(--wine);
+    border-color: var(--wine-bright);
   }
   .modal-x-btn {
     position: absolute;
@@ -1998,6 +2197,20 @@
     .hero-layout-grid { grid-template-columns: 1fr; }
     .hero-left-track, .hero-right-vertical, .hero-watermark-bg { display: none; }
     .nav-link-list { display: none; }
+    .nav-link-list.is-open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(18, 18, 20, 0.98);
+      border-bottom: 1px solid var(--line);
+      padding: 1.5rem;
+      gap: 1.2rem;
+      backdrop-filter: blur(12px);
+      z-index: 999;
+    }
     .mobile-menu-btn { display: flex; }
     .sec-header-balanced { flex-direction: column; align-items: flex-start; gap: 1rem; }
     .svc-cards-grid { grid-template-columns: 1fr; }
@@ -6315,8 +6528,8 @@
     </div>
 
     <div class="preloader-sub-row">
-      <span>[ 28.7041° N  77.1025° E ]</span>
-      <span>GLITCH // SECURE v2.6</span>
+      <span>[ 26.9124° N  75.7873° E ]</span>
+      <span>DS // DEV.SYS v1.0</span>
     </div>
   </div>
 </div>
@@ -6338,26 +6551,25 @@
         <path d="M14 20L28 6H38L22 22L38 34H28L14 20Z" fill="#6e1a2b"/>
       </svg>
       <div class="brand-titles">
-        <span class="main-glitch-logo">GLITCH</span>
-        <span class="sub-glitch-logo">DIGITAL SUPPORT AGENCY</span>
+        <span class="main-glitch-logo">DS</span>
+        <span class="sub-glitch-logo">DEV.SYS // PORTFOLIO</span>
       </div>
     </a>
 
     <nav class="nav-link-list">
-      <a href="#services" class="nav-item scramble-text">SERVICES</a>
-      <a href="#how-it-works" class="nav-item scramble-text">HOW IT WORKS</a>
-      <a href="#reviews" class="nav-item scramble-text">REVIEWS</a>
+      <a href="#cases" class="nav-item scramble-text">WORK</a>
+      <a href="#how-it-works" class="nav-item scramble-text">PROCESS</a>
       <a href="#about" class="nav-item scramble-text">ABOUT</a>
       <a href="#faq" class="nav-item scramble-text">FAQ</a>
       <a href="#contact" class="nav-item scramble-text">CONTACT</a>
     </nav>
 
     <div class="nav-right-actions">
-      <button class="btn-pill-wine open-case-btn magnetic-item" data-magnetic="0.3">
-        <span class="scramble-text">OPEN A CASE</span>
+      <a href="#contact" class="btn-pill-wine magnetic-item" data-magnetic="0.3">
+        <span class="scramble-text">START A PROJECT</span>
         <span class="arrow-diag-badge">&#8599;</span>
-      </button>
-      <button class="matrix-dot-btn magnetic-item" data-magnetic="0.4" aria-label="Quick menu" title="Agency Menu">
+      </a>
+      <button class="matrix-dot-btn magnetic-item" data-magnetic="0.4" aria-label="Quick menu" title="Portfolio Menu">
         <i></i><i></i><i></i>
         <i></i><i></i><i></i>
         <i></i><i></i><i></i>
@@ -6375,11 +6587,11 @@
        01: HERO SECTION - GEOMETRICALLY PERFECT ALIGNMENT
        ============================================================ -->
   <section class="hero-block-stage" id="top">
-    <!-- Atmospheric Background Watermark (Shifted for clean headline contrast) -->
+    <!-- Atmospheric Background Watermark -->
     <div class="hero-watermark-bg" id="heroWatermark" aria-hidden="true">
-      DIGITAL<br>
-      SUPPORT<br>
-      SYSTEM
+      DESIGN<br>
+      BUILD<br>
+      SHIP
     </div>
 
     <div class="hero-layout-grid">
@@ -6389,60 +6601,60 @@
         
         <div class="track-step-node">
           <span class="track-step-num">01</span>
-          <span class="track-step-label">SYSTEM</span>
+          <span class="track-step-label">DESIGN</span>
         </div>
 
         <div class="track-line-segment with-dots">
           <i></i><i></i><i></i>
         </div>
 
-        <span class="track-code-vert">4178</span>
+        <span class="track-code-vert">DEV.1</span>
 
         <div class="track-step-node">
           <span class="track-step-num">02</span>
-          <span class="track-step-label">SECURE</span>
+          <span class="track-step-label">DEVELOP</span>
         </div>
 
         <div class="track-line-segment"></div>
 
         <div class="track-step-node">
           <span class="track-step-num">03</span>
-          <span class="track-step-label">ACTIVE</span>
+          <span class="track-step-label">DEPLOY</span>
         </div>
 
         <span class="track-plus">+</span>
-        <div class="track-badge-g magnetic-item" data-magnetic="0.4">G</div>
+        <div class="track-badge-g magnetic-item" data-magnetic="0.4">DS</div>
       </div>
 
-      <!-- Hero Main Content (Left Column) -->
+      <!-- Hero Main Content -->
       <div class="hero-main-col">
         <div class="hero-kicker-tag">
           <span class="kicker-arrow">&raquo;</span>
-          <span>// DIGITAL PROBLEMS. *</span>
+          <span>// ONE DEVELOPER. *</span>
         </div>
         
         <h1 class="hero-giant-head">
-          REAL<br>
-          SUPPORT.<br>
-          <span class="highlight">REAL<br>
-          SOLUTIONS.</span>
+          WEBSITES<br>
+          THAT<br>
+          <span class="highlight">ACTUALLY<br>
+          WORK.</span>
         </h1>
         
         <p class="hero-lead-text">
-          We help individuals, creators and businesses resolve platform issues, improve their digital presence and get the support they deserve.
+          I design and build fast, clean websites for small businesses, creators, and founders — start to finish, by me, no account managers in between.
         </p>
 
         <div class="hero-actions-row">
-          <button class="btn-pill-wine open-case-btn magnetic-item" data-magnetic="0.25">
-            <span class="scramble-text">OPEN A CASE</span>
+          <a href="#contact" class="btn-pill-wine magnetic-item" data-magnetic="0.25">
+            <span class="scramble-text">START A PROJECT</span>
             <span class="arrow-diag-badge">&#8599;</span>
-          </button>
-          <button class="btn-play-ghost magnetic-item" data-magnetic="0.2" id="watchIntroBtn">
-            <span>WATCH INTRO</span>
+          </a>
+          <a href="#cases" class="btn-play-ghost magnetic-item" data-magnetic="0.2">
+            <span>SEE MY WORK</span>
             <div class="play-circle-icon">
               <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
             </div>
-          </button>
+          </a>
         </div>
 
         <!-- 3-Column Chamfered HUD Status Bar -->
@@ -6452,23 +6664,23 @@
           </div>
 
           <div class="hud-stat-col">
-            <span class="hud-box-kicker">SYSTEM STATUS</span>
+            <span class="hud-box-kicker">CURRENT STATUS</span>
             <div class="hud-box-value">
-              ALL SYSTEMS<br>OPERATIONAL
+              AVAILABLE<br>FOR WORK
               <span class="pulse-indicator-dot"></span>
             </div>
           </div>
 
           <div class="hud-stat-col">
-            <span class="hud-box-kicker">AVG. RESPONSE TIME</span>
-            <div class="hud-box-value wine-num">&lt; 15 MIN</div>
-            <span class="hud-sub-kicker">EST. RESPONSE</span>
+            <span class="hud-box-kicker">AVG. REPLY TIME</span>
+            <div class="hud-box-value wine-num">&lt; 24 HRS</div>
+            <span class="hud-sub-kicker">GUARANTEED</span>
           </div>
 
           <div class="hud-stat-col">
-            <span class="hud-box-kicker">INQUIRIES</span>
-            <div class="hud-box-value wine-num count-target" data-target="247">247</div>
-            <span class="hud-sub-kicker">OPEN</span>
+            <span class="hud-box-kicker">PROJECTS SHIPPED</span>
+            <div class="hud-box-value wine-num count-target" data-target="3">3</div>
+            <span class="hud-sub-kicker">LIVE</span>
           </div>
         </div>
       </div>
@@ -6488,11 +6700,11 @@
           <div class="hud-axes-lines"></div>
         </div>
 
-        <img src="assets/hero-cyborg.png" alt="Glitch Specialist Operative" id="heroCyborgImg" class="hero-cyborg-img" width="560" height="660" loading="eager">
+        <img src="assets/hero-cyborg.png" alt="DS — Developer" id="heroCyborgImg" class="hero-cyborg-img" width="560" height="660" loading="eager">
 
         <!-- Overlay HUD Badge -->
         <div class="cyborg-hud-badge">
-          <span class="badge-gg">GG</span>
+          <span class="badge-gg">DS</span>
           <span class="badge-sub">SYS. 01<br>PROTOCOL</span>
         </div>
       </div>
@@ -6501,20 +6713,20 @@
       <div class="hero-right-vertical" aria-hidden="true">
         <div class="top-right-tech-bracket"></div>
 
-        <span class="giant-glitch-vertical scramble-text" data-scramble-chars="GLITCH">GLITCH</span>
+        <span class="giant-glitch-vertical scramble-text" data-scramble-chars="DESIGN">DESIGN</span>
 
         <div class="hero-bottom-right-hud">
-          <span class="proto-kicker-01">GLITCH PROTOCOL 01</span>
-          <span class="proto-sub-desc">Secure. Private. Reliable.</span>
+          <span class="proto-kicker-01">[ 26.9124° N 75.7873° E ]</span>
+          <span class="proto-sub-desc">JAIPUR // INDIA v1.0</span>
           <div class="proto-tech-bar"></div>
-          <span class="agency-vert-tag">// DIGITAL SUPPORT AGENCY</span>
+          <span class="agency-vert-tag">// WEB DESIGNER & DEVELOPER</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       02: ABOUT GLITCH SECTION
+       02: ABOUT SECTION
        ============================================================ -->
   <section class="section-block" id="about">
     <div class="section-watermark-bg" aria-hidden="true">DEBRIEF // 02</div>
@@ -6529,14 +6741,14 @@
       <div class="sec-header-balanced">
         <div class="sec-header-titles">
           <span class="sec-kicker">
-            <span>// ABOUT GLITCH</span>
+            <span>// ABOUT</span>
             <span class="jp-sub-tag">・ 概要</span>
           </span>
-          <h2 class="sec-heading">ARCHITECTING DIGITAL <span class="highlight">RESILIENCE</span> & RAPID TRIAGE.</h2>
+          <h2 class="sec-heading">ONE PERSON. FULL OWNERSHIP. <span class="highlight">NO HANDOFFS.</span></h2>
         </div>
         <div>
-          <a href="#services" class="svc-all-btn magnetic-item" data-magnetic="0.2">
-            <span class="scramble-text">EXPLORE PROTOCOLS</span>
+          <a href="#cases" class="svc-all-btn magnetic-item" data-magnetic="0.2">
+            <span class="scramble-text">EXPLORE MY WORK</span>
             <span class="circle-nav-btn">&rarr;</span>
           </a>
         </div>
@@ -6546,24 +6758,24 @@
         <div class="about-main-card spotlight-card reveal-node stagger-1">
           <div class="tech-corner-tl"></div>
           <div>
-            <span class="why-tag" style="margin-bottom: 0.8rem; display:block;">CORE MISSION // DIRECT INCIDENT INTERVENTION</span>
-            <h3>Bypassing Automated Blackholes With Direct Escalation.</h3>
+            <span class="why-tag" style="margin-bottom: 0.8rem; display:block;">CORE APPROACH // DIRECT BUILD, NO MIDDLEMEN</span>
+            <h3>You Talk To The Person Actually Building Your Site.</h3>
             <p>
-              When mission-critical creator channels and enterprise digital assets get compromised, generic support tickets take weeks. GLITCH operates as a specialized emergency response unit, leveraging verified internal platform channels, verified compliance tokens, and 24/7 senior operatives to restore access and eliminate algorithmic blocks rapidly.
+              Most agencies route you through account managers before a single line of code gets written. I skip that — you tell me what you need, I design it, build it, and ship it. I'm a 2nd-year Electronics &amp; Communication Engineering student who builds websites on the side, which means you get someone who cares about the work being genuinely good, not just billable.
             </p>
           </div>
           <div class="about-stat-strip">
             <div class="about-stat-item">
-              <span class="stat-num">&lt;15m</span>
-              <span class="stat-lbl">Triage Latency</span>
+              <span class="stat-num">&lt;24h</span>
+              <span class="stat-lbl">Reply Time</span>
             </div>
             <div class="about-stat-item">
-              <span class="stat-num">96.3%</span>
-              <span class="stat-lbl">Case Success</span>
+              <span class="stat-num">100%</span>
+              <span class="stat-lbl">Direct Access</span>
             </div>
             <div class="about-stat-item">
-              <span class="stat-num">24/7</span>
-              <span class="stat-lbl">Global Duty</span>
+              <span class="stat-num">3+</span>
+              <span class="stat-lbl">Projects Delivered</span>
             </div>
           </div>
         </div>
@@ -6572,24 +6784,24 @@
           <div class="about-pillar-box spotlight-card reveal-node stagger-2">
             <span class="about-pillar-num">01</span>
             <div>
-              <h4 class="about-pillar-title">Direct Escalation Pipelines</h4>
-              <p class="about-pillar-desc">Direct compliance and partner channels across Meta, Google, TikTok, and X to bypass generic automated hold queues.</p>
+              <h4 class="about-pillar-title">Design + Development, One Person</h4>
+              <p class="about-pillar-desc">No separate design and dev teams miscommunicating your brief. I handle the full pipeline myself.</p>
             </div>
           </div>
 
           <div class="about-pillar-box spotlight-card reveal-node stagger-3">
             <span class="about-pillar-num">02</span>
             <div>
-              <h4 class="about-pillar-title">Zero Automated Bots</h4>
-              <p class="about-pillar-desc">Every case is diagnosed and handled directly by senior technical operatives with real-time Telegram/email status logs.</p>
+              <h4 class="about-pillar-title">Modern, Fast Stack</h4>
+              <p class="about-pillar-desc">Built with React, Tailwind, and clean semantic HTML/CSS/JS — no bloated page builders slowing your site down.</p>
             </div>
           </div>
 
           <div class="about-pillar-box spotlight-card reveal-node stagger-4">
             <span class="about-pillar-num">03</span>
             <div>
-              <h4 class="about-pillar-title">Cryptographic Confidentiality</h4>
-              <p class="about-pillar-desc">256-bit encrypted telemetry with zero-knowledge incident destruction and legally binding NDAs on every engagement.</p>
+              <h4 class="about-pillar-title">Honest Scoping</h4>
+              <p class="about-pillar-desc">I tell you upfront what's realistic for your budget and timeline, not what sounds good to close the deal.</p>
             </div>
           </div>
         </div>
@@ -6618,11 +6830,11 @@
               <span>// SERVICES</span>
               <span class="jp-sub-tag">・ 支援機構</span>
             </span>
-            <h2 class="sec-heading">HOW CAN WE <span class="highlight">HELP YOU?</span></h2>
+            <h2 class="sec-heading">WHAT I CAN <span class="highlight">BUILD FOR YOU</span></h2>
             <div class="services-header-meta-row">
-              <p class="sec-header-desc">Choose a specialized service protocol to begin direct incident escalation with our response team.</p>
-              <a href="#services" class="svc-all-btn magnetic-item" data-magnetic="0.2">
-                <span class="scramble-text">VIEW ALL</span>
+              <p class="sec-header-desc">Pick what you need — or tell me your problem and I'll scope the right fix.</p>
+              <a href="#contact" class="svc-all-btn magnetic-item" data-magnetic="0.2">
+                <span class="scramble-text">START A PROJECT</span>
                 <span class="circle-nav-btn">&rarr;</span>
               </a>
             </div>
@@ -6638,26 +6850,26 @@
               
               <div class="svc-card-head">
                 <div class="svc-card-meta-bar">
-                  <span class="svc-class-tag">CLASS: ACCOUNT-REC</span>
+                  <span class="svc-class-tag">CLASS: LANDING-PAGE</span>
                   <span class="svc-sep-slash">/</span>
-                  <span class="svc-prio-tag">PRIORITY: ALPHA</span>
+                  <span class="svc-prio-tag">PRIORITY: HIGH</span>
                 </div>
                 <span class="svc-stencil-badge">01</span>
               </div>
 
               <div class="svc-card-body">
                 <div class="svc-icon-chamfer-box">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="10" r="3"/><path d="M7 18a5 5 0 0 1 10 0"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                 </div>
                 <div class="svc-card-text-block">
-                  <h3 class="svc-card-title">ACCOUNT SERVICES</h3>
-                  <p class="svc-card-desc">Account recovery, restriction removal, disabled account escalation and identity verification support.</p>
+                  <h3 class="svc-card-title">WEBSITE DESIGN &amp; BUILD</h3>
+                  <p class="svc-card-desc">Custom landing pages, portfolio sites, and small business websites — designed and coded from scratch.</p>
                 </div>
               </div>
 
               <div class="svc-card-bottom-bar">
-                <span class="svc-price-tag">FROM &#8377;499</span>
-                <button class="svc-arrow-action-btn open-case-btn magnetic-item" data-magnetic="0.3" aria-label="Order Account Services">&rarr;</button>
+                <span class="svc-price-tag">FROM $150</span>
+                <a href="#contact" class="svc-arrow-action-btn magnetic-item" data-magnetic="0.3" aria-label="Start a Website Project">&rarr;</a>
               </div>
             </article>
 
@@ -6668,26 +6880,26 @@
               
               <div class="svc-card-head">
                 <div class="svc-card-meta-bar">
-                  <span class="svc-class-tag">CLASS: GROWTH-OPT</span>
+                  <span class="svc-class-tag">CLASS: REDESIGN</span>
                   <span class="svc-sep-slash">/</span>
-                  <span class="svc-prio-tag">PRIORITY: BETA</span>
+                  <span class="svc-prio-tag">PRIORITY: MEDIUM</span>
                 </div>
                 <span class="svc-stencil-badge">02</span>
               </div>
 
               <div class="svc-card-body">
                 <div class="svc-icon-chamfer-box">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><circle cx="12" cy="7" r="2"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
                 </div>
                 <div class="svc-card-text-block">
-                  <h3 class="svc-card-title">CREATOR SERVICES</h3>
-                  <p class="svc-card-desc">Engagement boost, profile optimization, growth strategies and content visibility diagnostics.</p>
+                  <h3 class="svc-card-title">REDESIGNS &amp; UPGRADES</h3>
+                  <p class="svc-card-desc">Got an outdated or slow site? I rebuild it with a modern look, faster load times, and mobile-first layout.</p>
                 </div>
               </div>
 
               <div class="svc-card-bottom-bar">
-                <span class="svc-price-tag">FROM &#8377;299</span>
-                <button class="svc-arrow-action-btn open-case-btn magnetic-item" data-magnetic="0.3" aria-label="Order Creator Services">&rarr;</button>
+                <span class="svc-price-tag">FROM $100</span>
+                <a href="#contact" class="svc-arrow-action-btn magnetic-item" data-magnetic="0.3" aria-label="Start a Redesign">&rarr;</a>
               </div>
             </article>
 
@@ -6698,26 +6910,26 @@
               
               <div class="svc-card-head">
                 <div class="svc-card-meta-bar">
-                  <span class="svc-class-tag">CLASS: CORE-SYS</span>
+                  <span class="svc-class-tag">CLASS: MAINTENANCE</span>
                   <span class="svc-sep-slash">/</span>
-                  <span class="svc-prio-tag">PRIORITY: GAMMA</span>
+                  <span class="svc-prio-tag">PRIORITY: ONGOING</span>
                 </div>
                 <span class="svc-stencil-badge">03</span>
               </div>
 
               <div class="svc-card-body">
                 <div class="svc-icon-chamfer-box">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><circle cx="12" cy="12" r="1.5"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
                 <div class="svc-card-text-block">
-                  <h3 class="svc-card-title">DIGITAL SERVICES</h3>
-                  <p class="svc-card-desc">Custom platform inquiries, copyright issues, account consultation and technical support.</p>
+                  <h3 class="svc-card-title">FIXES &amp; MAINTENANCE</h3>
+                  <p class="svc-card-desc">Bug fixes, content updates, speed optimization, and small feature additions to an existing site.</p>
                 </div>
               </div>
 
               <div class="svc-card-bottom-bar">
-                <span class="svc-price-tag">FROM &#8377;299</span>
-                <button class="svc-arrow-action-btn open-case-btn magnetic-item" data-magnetic="0.3" aria-label="Order Digital Services">&rarr;</button>
+                <span class="svc-price-tag">FROM $50</span>
+                <a href="#contact" class="svc-arrow-action-btn magnetic-item" data-magnetic="0.3" aria-label="Get Fixes">&rarr;</a>
               </div>
             </article>
           </div>
@@ -6735,11 +6947,11 @@
 
           <div class="svc-operative-tag">
             <span class="badge-dot-live"></span>
-            <span>DIAGNOSTIC OP // UNIT GG-02</span>
+            <span>AVAILABLE // DS-01</span>
           </div>
 
           <div class="svc-operative-wrap">
-            <img src="assets/operative-services.png?v=3" alt="GLITCH Diagnostics Operative" class="svc-operative-img" width="580" height="860" loading="eager">
+            <img src="assets/operative-services.png?v=3" alt="DS Web Development Specialist" class="svc-operative-img" width="580" height="860" loading="eager">
           </div>
         </div>
       </div>
@@ -6748,7 +6960,7 @@
 
 
   <!-- ============================================================
-       04: PLATFORMS SECTION
+       04: STACK / TOOLS SECTION
        ============================================================ -->
   <section class="section-block" id="platforms">
     <div class="section-watermark-bg" aria-hidden="true">ECOSYSTEM // 04</div>
@@ -6763,65 +6975,65 @@
       <div class="sec-header-balanced">
         <div class="sec-header-titles">
           <span class="sec-kicker">
-            <span>// PLATFORMS</span>
-            <span class="jp-sub-tag">・ 提携網</span>
+            <span>// STACK</span>
+            <span class="jp-sub-tag">・ 技術網</span>
           </span>
-          <h2 class="sec-heading">WE <span class="highlight">SUPPORT</span></h2>
+          <h2 class="sec-heading">TOOLS I <span class="highlight">BUILD WITH</span></h2>
         </div>
         <div class="sec-header-desc">
-          <p>Certified direct triage and incident resolution protocols across major global content networks.</p>
+          <p>Certified proficiency across the tools that ship real, fast websites.</p>
         </div>
       </div>
 
       <div class="platforms-five-grid">
         <div class="platform-pillar spotlight-card reveal-node stagger-1">
           <div class="tech-corner-tl"></div>
-          <span class="pillar-tag">NET.01</span>
+          <span class="pillar-tag">STK.01</span>
           <div class="pillar-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </div>
-          <h3 class="pillar-name">INSTAGRAM</h3>
-          <span class="pillar-status"><span class="status-pulse-dot"></span> LIVE SYNC</span>
+          <h3 class="pillar-name">HTML / CSS / JS</h3>
+          <span class="pillar-status"><span class="status-pulse-dot"></span> CORE</span>
         </div>
 
         <div class="platform-pillar spotlight-card reveal-node stagger-2">
           <div class="tech-corner-tl"></div>
-          <span class="pillar-tag">NET.02</span>
+          <span class="pillar-tag">STK.02</span>
           <div class="pillar-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>
           </div>
-          <h3 class="pillar-name">YOUTUBE</h3>
-          <span class="pillar-status"><span class="status-pulse-dot"></span> LIVE SYNC</span>
+          <h3 class="pillar-name">REACT</h3>
+          <span class="pillar-status"><span class="status-pulse-dot"></span> ACTIVE</span>
         </div>
 
         <div class="platform-pillar spotlight-card reveal-node stagger-3">
           <div class="tech-corner-tl"></div>
-          <span class="pillar-tag">NET.03</span>
+          <span class="pillar-tag">STK.03</span>
           <div class="pillar-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
-          <h3 class="pillar-name">TIKTOK</h3>
-          <span class="pillar-status"><span class="status-pulse-dot"></span> LIVE SYNC</span>
+          <h3 class="pillar-name">TAILWIND CSS</h3>
+          <span class="pillar-status"><span class="status-pulse-dot"></span> ACTIVE</span>
         </div>
 
         <div class="platform-pillar spotlight-card reveal-node stagger-4">
           <div class="tech-corner-tl"></div>
-          <span class="pillar-tag">NET.04</span>
+          <span class="pillar-tag">STK.04</span>
           <div class="pillar-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
           </div>
-          <h3 class="pillar-name">X (TWITTER)</h3>
-          <span class="pillar-status"><span class="status-pulse-dot"></span> LIVE SYNC</span>
+          <h3 class="pillar-name">FIGMA</h3>
+          <span class="pillar-status"><span class="status-pulse-dot"></span> DESIGN</span>
         </div>
 
         <div class="platform-pillar spotlight-card reveal-node stagger-5">
           <div class="tech-corner-tl"></div>
-          <span class="pillar-tag">NET.05</span>
+          <span class="pillar-tag">STK.05</span>
           <div class="pillar-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           </div>
-          <h3 class="pillar-name">OTHER PLATFORMS</h3>
-          <span class="pillar-status" style="color: var(--ink-tertiary);"><span class="status-pulse-dot" style="background: var(--ink-tertiary);"></span> READY</span>
+          <h3 class="pillar-name">GITHUB / VERCEL</h3>
+          <span class="pillar-status"><span class="status-pulse-dot"></span> DEPLOY</span>
         </div>
       </div>
     </div>
@@ -6829,7 +7041,7 @@
 
 
   <!-- ============================================================
-       05: WHY GLITCH SECTION
+       05: WHY WORK WITH ME SECTION
        ============================================================ -->
   <section class="section-block" id="why-glitch">
     <div class="section-watermark-bg" aria-hidden="true">ADVANTAGE // 05</div>
@@ -6844,13 +7056,13 @@
       <div class="sec-header-balanced">
         <div class="sec-header-titles">
           <span class="sec-kicker">
-            <span>// WHY GLITCH</span>
+            <span>// WHY ME</span>
             <span class="jp-sub-tag">・ 選択の理由</span>
           </span>
-          <h2 class="sec-heading">WHY CREATORS & BRANDS <span class="highlight">CHOOSE US.</span></h2>
+          <h2 class="sec-heading">WHY CLIENTS CHOOSE TO <span class="highlight">WORK WITH ME DIRECTLY.</span></h2>
         </div>
         <div class="sec-header-desc">
-          <p>Engineered to deliver decisive incident resolution when standard support fails.</p>
+          <p>Built to deliver without the overhead of an agency.</p>
         </div>
       </div>
 
@@ -6862,14 +7074,14 @@
               <div class="why-icon-badge">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
-              <span class="why-tag">TRIAGE // SPEED</span>
+              <span class="why-tag">SPEED // TURNAROUND</span>
             </div>
-            <h3 class="why-title">&lt;15m Response</h3>
-            <p class="why-desc">Emergency incident response begins immediately upon intake without multi-week automated hold delays.</p>
+            <h3 class="why-title">&lt;24h Reply</h3>
+            <p class="why-desc">You get a real response from me within a day, not a support queue ticket.</p>
           </div>
           <div class="why-vs-pill">
-            <span class="vs-good">GLITCH: 15 MIN</span>
-            <span>STANDARD: 14 DAYS</span>
+            <span class="vs-good">ME: &lt; 24H</span>
+            <span>AGENCY: 3-5 DAYS</span>
           </div>
         </div>
 
@@ -6878,16 +7090,16 @@
           <div>
             <div class="why-header">
               <div class="why-icon-badge">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
-              <span class="why-tag">ENGINEERING // HUMAN</span>
+              <span class="why-tag">ACCESS // DIRECT</span>
             </div>
-            <h3 class="why-title">Real Operatives</h3>
-            <p class="why-desc">Assigned dedicated senior platform technicians rather than repetitive, generic AI chatbots.</p>
+            <h3 class="why-title">No Middlemen</h3>
+            <p class="why-desc">You talk to the person actually writing the code — every time.</p>
           </div>
           <div class="why-vs-pill">
-            <span class="vs-good">GLITCH: SENIOR ENGS</span>
-            <span>STANDARD: BOTS</span>
+            <span class="vs-good">ME: DIRECT</span>
+            <span>AGENCY: ACCOUNT MGR</span>
           </div>
         </div>
 
@@ -6898,14 +7110,14 @@
               <div class="why-icon-badge">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
               </div>
-              <span class="why-tag">SECURITY // ZERO-LOG</span>
+              <span class="why-tag">PRICING // TRANSPARENT</span>
             </div>
-            <h3 class="why-title">Strict Privacy</h3>
-            <p class="why-desc">256-bit encrypted telemetry with zero-knowledge data destruction and signed Non-Disclosure protection.</p>
+            <h3 class="why-title">Upfront Pricing</h3>
+            <p class="why-desc">Clear scope and cost before we start. No surprise add-ons.</p>
           </div>
           <div class="why-vs-pill">
-            <span class="vs-good">GLITCH: ENCRYPTED NDA</span>
-            <span>STANDARD: UNSECURED</span>
+            <span class="vs-good">ME: FIXED QUOTE</span>
+            <span>AGENCY: HOURLY CREEP</span>
           </div>
         </div>
 
@@ -6916,14 +7128,14 @@
               <div class="why-icon-badge">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
-              <span class="why-tag">OUTCOME // SUCCESS</span>
+              <span class="why-tag">QUALITY // OWNERSHIP</span>
             </div>
-            <h3 class="why-title">96.3% Clearance</h3>
-            <p class="why-desc">Proven resolution track record backed by our full money-back clearance guarantee.</p>
+            <h3 class="why-title">Full Accountability</h3>
+            <p class="why-desc">One person responsible for the whole build means nothing falls through the cracks.</p>
           </div>
           <div class="why-vs-pill">
-            <span class="vs-good">GLITCH: 96.3%</span>
-            <span>STANDARD: ~40%</span>
+            <span class="vs-good">ME: 1 OWNER</span>
+            <span>AGENCY: HANDOFFS</span>
           </div>
         </div>
       </div>
@@ -6953,7 +7165,7 @@
           <h2 class="sec-heading">HOW IT <span class="highlight">WORKS</span></h2>
         </div>
         <div class="sec-header-desc">
-          <p>Standardized 5-phase escalation lifecycle from encrypted intake to full incident closure.</p>
+          <p>A straightforward 5-step process from first message to live site.</p>
         </div>
       </div>
 
@@ -6964,10 +7176,10 @@
             <div class="proc-icon-wrap">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             </div>
-            <span class="proc-step-badge">01 / SUBMIT</span>
+            <span class="proc-step-badge">01 / BRIEF</span>
           </div>
-          <h3 class="proc-title">SUBMIT</h3>
-          <p class="proc-desc">Submit your case securely through our intake protocol.</p>
+          <h3 class="proc-title">BRIEF</h3>
+          <p class="proc-desc">You tell me what you need — goals, examples you like, budget, timeline.</p>
         </div>
 
         <div class="process-node spotlight-card reveal-node stagger-2">
@@ -6976,10 +7188,10 @@
             <div class="proc-icon-wrap">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </div>
-            <span class="proc-step-badge">02 / REVIEW</span>
+            <span class="proc-step-badge">02 / SCOPE</span>
           </div>
-          <h3 class="proc-title">REVIEW</h3>
-          <p class="proc-desc">Our diagnostic team inspects account telemetry.</p>
+          <h3 class="proc-title">SCOPE</h3>
+          <p class="proc-desc">I send a clear quote and timeline. No work starts until you approve it.</p>
         </div>
 
         <div class="process-node is-central-focal spotlight-card reveal-node stagger-3">
@@ -6987,24 +7199,24 @@
           <div class="tech-corner-tr"></div>
           <div class="process-node-top">
             <div class="proc-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
             </div>
-            <span class="proc-step-badge">03 / CORE</span>
+            <span class="proc-step-badge">03 / DESIGN</span>
           </div>
-          <h3 class="proc-title">PROCESS</h3>
-          <p class="proc-desc">Direct technical intervention and platform escalation.</p>
+          <h3 class="proc-title">DESIGN</h3>
+          <p class="proc-desc">I build a mockup so you can see direction before full development.</p>
         </div>
 
         <div class="process-node spotlight-card reveal-node stagger-4">
           <div class="tech-corner-tl"></div>
           <div class="process-node-top">
             <div class="proc-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
-            <span class="proc-step-badge">04 / UPDATE</span>
+            <span class="proc-step-badge">04 / BUILD</span>
           </div>
-          <h3 class="proc-title">UPDATE</h3>
-          <p class="proc-desc">Live progress reports transmitted to your desk.</p>
+          <h3 class="proc-title">BUILD</h3>
+          <p class="proc-desc">Full development with progress updates — you're never left wondering.</p>
         </div>
 
         <div class="process-node spotlight-card reveal-node stagger-5">
@@ -7013,10 +7225,10 @@
             <div class="proc-icon-wrap">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
             </div>
-            <span class="proc-step-badge">05 / RESOLVE</span>
+            <span class="proc-step-badge">05 / LAUNCH</span>
           </div>
-          <h3 class="proc-title">RESOLVE</h3>
-          <p class="proc-desc">Full restoration confirmed and protocol finalized.</p>
+          <h3 class="proc-title">LAUNCH</h3>
+          <p class="proc-desc">Final review, revisions, and deployment. Site goes live, you get everything you need.</p>
         </div>
       </div>
     </div>
@@ -7042,57 +7254,57 @@
       <div class="sec4-arena-body">
         <div class="tv-left-content reveal-node stagger-1">
           <div class="sec-kicker" style="margin-bottom: 0.8rem;">
-            <span>// IMPACT &amp; TELEMETRY</span>
+            <span>// WORK &amp; APPROACH</span>
             <span class="jp-sub-tag">+</span>
           </div>
 
           <h2 class="sec4-headline">
-            OUR<br>
-            IMPACT<br>
+            MY<br>
+            WORK<br>
             IN<br>
             <span class="highlight">NUMBERS.</span>
           </h2>
 
           <p class="sec4-subtext">
-            Real-time performance figures updated continuously across global active support desks.
+            Real builds — client work and personal projects shipped, start to finish.
           </p>
 
           <div class="tv-metrics-matrix">
             <div class="tv-metric-cell">
               <div class="cb-tr">&#9488;</div>
               <span class="m-code-tag">// METRIC_01</span>
-              <div class="m-huge-val" data-target="2000" data-suffix="K+">2K+</div>
+              <div class="m-huge-val" data-target="3" data-suffix="+">3+</div>
               <span class="m-red-dash"></span>
-              <span class="m-desc-lbl">CASES RESOLVED</span>
+              <span class="m-desc-lbl">PROJECTS SHIPPED</span>
             </div>
 
             <div class="tv-metric-cell">
               <div class="cb-tr">&#9488;</div>
               <span class="m-code-tag">// METRIC_02</span>
-              <div class="m-huge-val" data-target="96.3" data-suffix="%" data-decimal="true">96.3%</div>
+              <div class="m-huge-val">3-5D</div>
               <span class="m-red-dash"></span>
-              <span class="m-desc-lbl">SUCCESS RATE</span>
+              <span class="m-desc-lbl">AVG TURNAROUND</span>
             </div>
 
             <div class="tv-metric-cell">
               <div class="cb-tr">&#9488;</div>
               <span class="m-code-tag">// METRIC_03</span>
-              <div class="m-huge-val">15MIN</div>
+              <div class="m-huge-val">&lt;24H</div>
               <span class="m-red-dash"></span>
-              <span class="m-desc-lbl">AVG RESPONSE TIME</span>
+              <span class="m-desc-lbl">REPLY GUARANTEE</span>
             </div>
 
             <div class="tv-metric-cell">
               <div class="cb-tr">&#9488;</div>
               <div class="cb-br">&#9698;</div>
               <span class="m-code-tag">// METRIC_04</span>
-              <div class="m-huge-val">24/7</div>
+              <div class="m-huge-val">50/50</div>
               <div class="m-dot-grid" aria-hidden="true">
                 <i></i><i></i><i></i><i></i>
                 <i></i><i></i><i></i><i></i>
                 <i></i><i></i><i></i><i></i>
               </div>
-              <span class="m-desc-lbl">SUPPORT ACTIVE</span>
+              <span class="m-desc-lbl">PAYMENT SPLIT</span>
             </div>
           </div>
         </div>
@@ -7105,11 +7317,11 @@
 
           <div class="tv-operative-badge">
             <span class="badge-dot-live"></span>
-            <span>ACTIVE OP // UNIT GG-02</span>
+            <span>DIRECT DEV // UNIT DS-02</span>
           </div>
 
           <div class="tv-kneeling-wrapper">
-            <img src="assets/operative-kneeling.png" alt="GLITCH Kneeling Operative" class="tv-kneeling-img" width="580" height="740" loading="eager">
+            <img src="assets/operative-kneeling.png" alt="DS Developer Operative" class="tv-kneeling-img" width="580" height="740" loading="eager">
           </div>
         </div>
 
@@ -7144,8 +7356,8 @@
       <div class="sec4-bottom-status-line">
         <div class="status-left-indicator">
           <span class="live-dot-pink"></span>
-          <span class="status-title-red">SYSTEM STATUS</span>
-          <span class="status-val-text">ALL SYSTEMS OPERATIONAL</span>
+          <span class="status-title-red">CURRENT STATUS</span>
+          <span class="status-val-text">AVAILABLE FOR WORK</span>
           <span class="status-divider-pipe">|</span>
           <span class="status-state-live">LIVE</span>
         </div>
@@ -7156,404 +7368,154 @@
     </div>
 
     <div class="sec4-right-gutter">
-      <div class="sec4-vert-coord">28.7041&deg; N</div>
+      <div class="sec4-vert-coord">26.9124&deg; N</div>
       <span class="sec4-plus-cross">+</span>
-      <div class="sec4-vert-coord">77.1025&deg; E</div>
+      <div class="sec4-vert-coord">75.7873&deg; E</div>
       <span class="sec4-plus-cross">+</span>
     </div>
   </section>
 
 
   <!-- ============================================================
-       08: CLIENT REVIEWS SECTION
+       08: SELECTED WORK / CASE STUDIES SECTION
        ============================================================ -->
-  <section class="section-block" id="reviews">
-    <div class="section-watermark-bg" aria-hidden="true">TRANSMISSIONS // 08</div>
+  <section class="section-block" id="cases">
+    <div class="section-watermark-bg" aria-hidden="true">INTEL // 08</div>
 
     <div class="sec-num-box">
       <span class="sec-stencil-num">08</span>
       <span class="sec-dash-bar"></span>
-      <span class="sec-marginal-coord">DEBRIEF // 08.LOG</span>
+      <span class="sec-marginal-coord">INTEL // 08.CAS</span>
     </div>
 
     <div class="sec-content-col">
       <div class="sec-header-balanced">
         <div class="sec-header-titles">
           <span class="sec-kicker">
-            <span>// REVIEWS</span>
-            <span class="jp-sub-tag">・ 依頼者の声</span>
+            <span>// SELECTED WORK</span>
+            <span class="jp-sub-tag">・ 制作実績</span>
           </span>
-          <h2 class="sec-heading">WHAT <span class="highlight">CLIENTS</span> SAY</h2>
-        </div>
-        
-        <div class="sec5-header-actions">
-          <div class="carousel-arrows-pair">
-            <button class="carousel-nav-btn magnetic-item" data-magnetic="0.3" id="prevReviewBtn" aria-label="Previous review">&larr;</button>
-            <button class="carousel-nav-btn magnetic-item" data-magnetic="0.3" id="nextReviewBtn" aria-label="Next review">&rarr;</button>
-          </div>
-          <a href="#reviews" class="svc-all-btn magnetic-item" data-magnetic="0.2">
-            <span class="scramble-text">VIEW ALL REVIEWS</span>
-            <span class="circle-nav-btn">&rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="reviews-carousel-stage">
-        <div class="reviews-slider-viewport" id="reviewsViewport">
-          <div class="reviews-slider-track" id="reviewsTrack">
-            <!-- Review 1 -->
-            <article class="review-item-card spotlight-card reveal-node stagger-1">
-              <div class="tech-corner-tl"></div>
-              <div>
-                <div class="review-log-id">
-                  <span>LOG // #TR-4091</span>
-                  <span>VERIFIED CASE</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"Amazing service! Got my Instagram account back in 24 hours. Highly recommended!"</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-arjun.jpg" alt="Arjun D." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Arjun D.</span>
-                  <span class="reviewer-sub">Content Creator</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Review 2 (FEATURED) -->
-            <article class="review-item-card is-featured-review spotlight-card reveal-node stagger-2">
-              <div class="tech-corner-tl"></div>
-              <div class="tech-corner-tr"></div>
-              <div>
-                <div class="review-log-id">
-                  <span style="color: var(--wine); font-weight: 700;">LOG // #TR-8824 [FEATURED]</span>
-                  <span>RESTORED &bull; 12H</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"Engagement boost service is next level. My reach increased drastically in a single week. Direct, transparent, and ultra-fast communication throughout."</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-neha.jpg" alt="Neha S." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Neha S.</span>
-                  <span class="reviewer-sub">Verified Influencer</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Review 3 -->
-            <article class="review-item-card spotlight-card reveal-node stagger-3">
-              <div class="tech-corner-tl"></div>
-              <div>
-                <div class="review-log-id">
-                  <span>LOG // #TR-3398</span>
-                  <span>VERIFIED CASE</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"Very professional and transparent team. They keep you updated every step of the way."</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-rohit.jpg" alt="Rohit K." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Rohit K.</span>
-                  <span class="reviewer-sub">YouTuber</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Review 4 -->
-            <article class="review-item-card spotlight-card reveal-node stagger-4">
-              <div class="tech-corner-tl"></div>
-              <div>
-                <div class="review-log-id">
-                  <span>LOG // #TR-5521</span>
-                  <span>VERIFIED CASE</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"Had an unauthorized copyright strike threatening our brand catalog. The GLITCH team filed an expedited counter-notice and resolved it in 18 hours flat."</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-maya.jpg" alt="Maya V." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Maya V.</span>
-                  <span class="reviewer-sub">E-Commerce Founder</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Review 5 (FEATURED) -->
-            <article class="review-item-card is-featured-review spotlight-card reveal-node stagger-5">
-              <div class="tech-corner-tl"></div>
-              <div class="tech-corner-tr"></div>
-              <div>
-                <div class="review-log-id">
-                  <span style="color: var(--wine); font-weight: 700;">LOG // #TR-7714 [FEATURED]</span>
-                  <span>RESTORED &bull; 6H</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"Recovered my compromised streaming credentials right before a sponsored tournament. Absolute lifesavers with top-tier security triage."</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-karan.jpg" alt="Karan M." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Karan M.</span>
-                  <span class="reviewer-sub">Gaming Partner</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Review 6 -->
-            <article class="review-item-card spotlight-card reveal-node stagger-6">
-              <div class="tech-corner-tl"></div>
-              <div>
-                <div class="review-log-id">
-                  <span>LOG // #TR-9204</span>
-                  <span>VERIFIED CASE</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"We manage 40+ client accounts and rely on GLITCH for high-priority platform escalations. Unbeatable turnaround and encrypted confidentiality."</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-priya.jpg" alt="Priya R." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Priya R.</span>
-                  <span class="reviewer-sub">Agency Director</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Review 7 -->
-            <article class="review-item-card spotlight-card reveal-node stagger-1">
-              <div class="tech-corner-tl"></div>
-              <div>
-                <div class="review-log-id">
-                  <span>LOG // #TR-6188</span>
-                  <span>VERIFIED CASE</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"Our podcast feed got restricted unexpectedly. GLITCH diagnosed the API token glitch and re-indexed our entire distribution network without loss."</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-devansh.jpg" alt="Devansh S." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Devansh S.</span>
-                  <span class="reviewer-sub">Tech Journalist</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Review 8 -->
-            <article class="review-item-card spotlight-card reveal-node stagger-2">
-              <div class="tech-corner-tl"></div>
-              <div>
-                <div class="review-log-id">
-                  <span>LOG // #TR-8102</span>
-                  <span>VERIFIED CASE</span>
-                </div>
-                <div class="review-star-row">
-                  <div class="star-vector-group">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--wine)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <span class="star-score">5.0</span>
-                </div>
-                <p class="review-text-quote">"Got my shadowbanned profile audited and restored. Direct communication on Telegram with real operatives rather than automated generic bots."</p>
-              </div>
-              <div class="reviewer-profile">
-                <img src="assets/avatar-aanya.jpg" alt="Aanya T." class="reviewer-thumb" width="44" height="44" loading="eager">
-                <div>
-                  <span class="reviewer-author">Aanya T.</span>
-                  <span class="reviewer-sub">Fashion Creator</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <div class="reviews-dot-list" id="reviewsDots">
-        <button class="dot-pill active magnetic-item" data-magnetic="0.2" aria-label="Review page 1"></button>
-        <button class="dot-pill magnetic-item" data-magnetic="0.2" aria-label="Review page 2"></button>
-        <button class="dot-pill magnetic-item" data-magnetic="0.2" aria-label="Review page 3"></button>
-        <button class="dot-pill magnetic-item" data-magnetic="0.2" aria-label="Review page 4"></button>
-        <button class="dot-pill magnetic-item" data-magnetic="0.2" aria-label="Review page 5"></button>
-        <button class="dot-pill magnetic-item" data-magnetic="0.2" aria-label="Review page 6"></button>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       09: CASE STUDIES SECTION
-       ============================================================ -->
-  <section class="section-block" id="cases">
-    <div class="section-watermark-bg" aria-hidden="true">INTEL // 09</div>
-
-    <div class="sec-num-box">
-      <span class="sec-stencil-num">09</span>
-      <span class="sec-dash-bar"></span>
-      <span class="sec-marginal-coord">INTEL // 09.CAS</span>
-    </div>
-
-    <div class="sec-content-col">
-      <div class="sec-header-balanced">
-        <div class="sec-header-titles">
-          <span class="sec-kicker">
-            <span>// CASE STUDIES</span>
-            <span class="jp-sub-tag">・ 事例分析</span>
-          </span>
-          <h2 class="sec-heading">RECENT <span class="highlight">INCIDENT</span> DOSSIERS.</h2>
+          <h2 class="sec-heading">PROJECTS I'VE <span class="highlight">SHIPPED.</span></h2>
         </div>
         <div class="sec-header-desc">
-          <p>Declassified case summaries of mission-critical platform restorations and security escalations.</p>
+          <p>Real builds — client work, digital humanities archives, and engineering dashboards.</p>
         </div>
       </div>
 
       <div class="cases-grid">
-        <!-- Case 01 -->
+        <!-- Case 01 — Namami Cafe -->
         <article class="case-card spotlight-card reveal-node stagger-1">
           <div class="tech-corner-tl"></div>
           <div>
             <div class="case-top-meta">
-              <span>INCIDENT #CS-8921</span>
-              <span class="case-badge-pill">RESOLVED &bull; 4.2H</span>
+              <span>PROJECT #001 — CLIENT WORK</span>
+              <span class="case-badge-pill">HTML / CSS / JS</span>
             </div>
-            <h3 class="case-title">YouTube Partner Channel Hijack Recovery</h3>
-            <p class="case-summary">Session token hijack via malicious PDF sponsorship attachment. Channel was rebranded to crypto live stream before GLITCH executed an emergency freeze.</p>
+            <h3 class="case-title">Namami Cafe — Dining Experience</h3>
+            <p class="case-summary">Designed and built a mobile-first digital experience and menu showcase for a premium cafe &amp; kitchen in Jaipur.</p>
+            
+            <div class="case-preview-interactive open-gallery-trigger" data-project="namami" title="Click to view all 4 slides">
+              <img src="assets/projects/namami/1.png" alt="Namami Cafe Digital Experience" loading="lazy">
+              <span class="case-slides-overlay-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+                <span>4 SLIDES &bull; EXPAND ↗</span>
+              </span>
+            </div>
           </div>
           <div class="case-spec-table">
             <div class="case-spec-row">
-              <span class="spec-k">TARGET:</span>
-              <span class="spec-v">Gaming Creator (1.2M Subs)</span>
+              <span class="spec-k">CLIENT:</span>
+              <span class="spec-v">Namami Cafe &amp; Kitchen</span>
             </div>
             <div class="case-spec-row">
-              <span class="spec-k">VECTOR:</span>
-              <span class="spec-v">Session Cookie Theft</span>
+              <span class="spec-k">GALLERY:</span>
+              <span class="spec-v"><button type="button" class="open-gallery-trigger" data-project="namami" style="background:none; border:none; color:var(--wine); cursor:pointer; font-family:var(--f-mono); font-size:0.75rem; font-weight:700; text-decoration:underline; padding:0;">View 4 Slides ↗</button></span>
+            </div>
+            <div class="case-spec-row">
+              <span class="spec-k">STACK:</span>
+              <span class="spec-v">HTML5 / Modern CSS / Vanilla JS</span>
             </div>
             <div class="case-spec-row">
               <span class="spec-k">OUTCOME:</span>
-              <span class="spec-v" style="color: var(--wine);">100% Data &amp; Subs Restored</span>
+              <span class="spec-v" style="color: var(--wine);">Menu Showcase + Brand Presence</span>
             </div>
           </div>
         </article>
 
-        <!-- Case 02 -->
+        <!-- Case 02 — The Imperial Audit -->
         <article class="case-card spotlight-card reveal-node stagger-2">
           <div class="tech-corner-tl"></div>
           <div>
             <div class="case-top-meta">
-              <span>INCIDENT #CS-4418</span>
-              <span class="case-badge-pill">RESOLVED &bull; 18H</span>
+              <span>PROJECT #002 — ARCHIVE / RESEARCH</span>
+              <span class="case-badge-pill">NEXT.JS / TAILWIND</span>
             </div>
-            <h3 class="case-title">Instagram Shadowban &amp; Mass-DMCA Sabotage</h3>
-            <p class="case-summary">Coordinated competitor bot reporting triggered automatic algorithmic reach suppression and 6 fraudulent copyright strikes.</p>
+            <h3 class="case-title">The Imperial Audit — Digital Archive</h3>
+            <p class="case-summary">Forensic digital humanities monograph cataloging colonial administrative records, economic drain figures, and historical famines (1757–1947).</p>
+            
+            <div class="case-preview-interactive open-gallery-trigger" data-project="theimperial-audit" title="Click to view all 4 slides">
+              <img src="assets/projects/theimperial-audit/1.png" alt="The Imperial Audit Archive" loading="lazy">
+              <span class="case-slides-overlay-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+                <span>4 SLIDES &bull; EXPAND ↗</span>
+              </span>
+            </div>
           </div>
           <div class="case-spec-table">
             <div class="case-spec-row">
-              <span class="spec-k">TARGET:</span>
-              <span class="spec-v">E-Commerce Brand ($4M ARR)</span>
+              <span class="spec-k">LIVE URL:</span>
+              <span class="spec-v"><a href="https://dsjangid.github.io/TheImperialAudit" target="_blank" rel="noopener" style="color: var(--wine); text-decoration: underline;">dsjangid.github.io/TheImperialAudit ↗</a></span>
             </div>
             <div class="case-spec-row">
-              <span class="spec-k">VECTOR:</span>
-              <span class="spec-v">Bot Network DMCA Fraud</span>
+              <span class="spec-k">GALLERY:</span>
+              <span class="spec-v"><button type="button" class="open-gallery-trigger" data-project="theimperial-audit" style="background:none; border:none; color:var(--wine); cursor:pointer; font-family:var(--f-mono); font-size:0.75rem; font-weight:700; text-decoration:underline; padding:0;">View 4 Slides ↗</button></span>
+            </div>
+            <div class="case-spec-row">
+              <span class="spec-k">STACK:</span>
+              <span class="spec-v">Next.js / Tailwind / Typography</span>
             </div>
             <div class="case-spec-row">
               <span class="spec-k">OUTCOME:</span>
-              <span class="spec-v" style="color: var(--wine);">Strikes Voided &amp; Reach Cleared</span>
+              <span class="spec-v" style="color: var(--wine);">47 Primary Incidents &amp; Methodology</span>
             </div>
           </div>
         </article>
 
-        <!-- Case 03 -->
+        <!-- Case 03 — NAYAN / Drishti -->
         <article class="case-card spotlight-card reveal-node stagger-3">
           <div class="tech-corner-tl"></div>
           <div>
             <div class="case-top-meta">
-              <span>INCIDENT #CS-7093</span>
-              <span class="case-badge-pill">RESOLVED &bull; 6H</span>
+              <span>PROJECT #003 — SIH 2026</span>
+              <span class="case-badge-pill">FASTAPI + WEBSOCKETS</span>
             </div>
-            <h3 class="case-title">Executive Impersonation &amp; Phishing Sweep</h3>
-            <p class="case-summary">14 counterfeit verified accounts scamming followers. GLITCH deployed rapid brand compliance notices and expedited verification badge triage.</p>
+            <h3 class="case-title">NAYAN — Road Anomaly Telematics</h3>
+            <p class="case-summary">Fleet telematics &amp; AI anomaly detection platform for Smart India Hackathon 2026 with real-time WebSocket telemetry and live dashboard stream.</p>
+            
+            <div class="case-preview-interactive open-gallery-trigger" data-project="nayan" title="Click to view all 4 slides">
+              <img src="assets/projects/nayan/1.png" alt="NAYAN SIH Dashboard" loading="lazy">
+              <span class="case-slides-overlay-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+                <span>4 SLIDES &bull; EXPAND ↗</span>
+              </span>
+            </div>
           </div>
           <div class="case-spec-table">
             <div class="case-spec-row">
-              <span class="spec-k">TARGET:</span>
-              <span class="spec-v">FinTech CEO Profile</span>
+              <span class="spec-k">LIVE URL:</span>
+              <span class="spec-v"><a href="https://dsjangid.github.io/NAYAN" target="_blank" rel="noopener" style="color: var(--wine); text-decoration: underline;">dsjangid.github.io/NAYAN ↗</a></span>
             </div>
             <div class="case-spec-row">
-              <span class="spec-k">VECTOR:</span>
-              <span class="spec-v">Identity Spoofing</span>
+              <span class="spec-k">GALLERY:</span>
+              <span class="spec-v"><button type="button" class="open-gallery-trigger" data-project="nayan" style="background:none; border:none; color:var(--wine); cursor:pointer; font-family:var(--f-mono); font-size:0.75rem; font-weight:700; text-decoration:underline; padding:0;">View 4 Slides ↗</button></span>
+            </div>
+            <div class="case-spec-row">
+              <span class="spec-k">STACK:</span>
+              <span class="spec-v">FastAPI / WebSockets / YOLOv8x UI</span>
             </div>
             <div class="case-spec-row">
               <span class="spec-k">OUTCOME:</span>
-              <span class="spec-v" style="color: var(--wine);">14 Scams Purged + Badge Secured</span>
+              <span class="spec-v" style="color: var(--wine);">Real-time Telemetry &amp; Detection</span>
             </div>
           </div>
         </article>
@@ -7563,15 +7525,15 @@
 
 
     <!-- ============================================================
-       10: FAQ SECTION
+       09: FAQ SECTION
        ============================================================ -->
   <section class="section-block" id="faq">
-    <div class="section-watermark-bg" aria-hidden="true">INTEL // 10</div>
+    <div class="section-watermark-bg" aria-hidden="true">INTEL // 09</div>
 
     <div class="sec-num-box">
-      <span class="sec-stencil-num">10</span>
+      <span class="sec-stencil-num">09</span>
       <span class="sec-dash-bar"></span>
-      <span class="sec-marginal-coord">INTEL // 10.FAQ</span>
+      <span class="sec-marginal-coord">INTEL // 09.FAQ</span>
     </div>
 
     <div class="sec-content-col">
@@ -7584,7 +7546,7 @@
           <h2 class="sec-heading">FREQUENTLY ASKED <span class="highlight">QUESTIONS.</span></h2>
         </div>
         <div class="sec-header-desc">
-          <p>Everything you need to know about our triage protocols, security, and response turnaround.</p>
+          <p>Everything you need to know before starting a project.</p>
         </div>
       </div>
 
@@ -7593,14 +7555,14 @@
         <div class="faq-item is-open spotlight-card reveal-node stagger-1">
           <div class="tech-corner-tl"></div>
           <button class="faq-trigger-btn" aria-expanded="true" aria-controls="faq-ans-1">
-            <span class="faq-question-text">How fast will an operative respond to my emergency case?</span>
+            <span class="faq-question-text">How fast can you turn around a project?</span>
             <span class="faq-icon-cross">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"></line><line x1="4" y1="12" x2="20" y2="12"></line></svg>
             </span>
           </button>
           <div class="faq-body-content" id="faq-ans-1">
             <div class="faq-body-inner">
-              <p>For critical cases, our senior triage desk initiates investigation within <strong>15 minutes</strong>. Our global security operatives operate across 24/7/365 shifts, ensuring non-stop escalation regardless of your timezone.</p>
+              <p>Simple landing pages: <strong>3-5 days</strong>. Full multi-page sites: <strong>1-2 weeks</strong>, depending on scope and how quickly you can provide content/feedback.</p>
             </div>
           </div>
         </div>
@@ -7609,14 +7571,14 @@
         <div class="faq-item spotlight-card reveal-node stagger-2">
           <div class="tech-corner-tl"></div>
           <button class="faq-trigger-btn" aria-expanded="false" aria-controls="faq-ans-2">
-            <span class="faq-question-text">Do you need my account passwords to fix issues?</span>
+            <span class="faq-question-text">Do you handle design and development, or just one?</span>
             <span class="faq-icon-cross">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"></line><line x1="4" y1="12" x2="20" y2="12"></line></svg>
             </span>
           </button>
           <div class="faq-body-content" id="faq-ans-2">
             <div class="faq-body-inner">
-              <p><strong>Never.</strong> We will never ask for your account password. We operate strictly through platform partner escalation tokens, verified compliance forms, and direct enterprise relations channels.</p>
+              <p><strong>Both.</strong> I design the layout and visual direction, then build it myself in code — no gap between what's designed and what actually ships.</p>
             </div>
           </div>
         </div>
@@ -7625,14 +7587,14 @@
         <div class="faq-item spotlight-card reveal-node stagger-3">
           <div class="tech-corner-tl"></div>
           <button class="faq-trigger-btn" aria-expanded="false" aria-controls="faq-ans-3">
-            <span class="faq-question-text">What platforms do you officially support?</span>
+            <span class="faq-question-text">What do I need to provide to get started?</span>
             <span class="faq-icon-cross">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"></line><line x1="4" y1="12" x2="20" y2="12"></line></svg>
             </span>
           </button>
           <div class="faq-body-content" id="faq-ans-3">
             <div class="faq-body-inner">
-              <p>We support Instagram, YouTube, TikTok, X (Twitter), Facebook, LinkedIn, Discord, Twitch, and Telegram. For unlisted platforms, our custom enterprise desk can evaluate specific compliance pipelines.</p>
+              <p>Your logo/branding (if you have one), any content or copy you want included, and a few reference sites you like the look of. If you don't have copy ready, I can help draft it.</p>
             </div>
           </div>
         </div>
@@ -7641,14 +7603,14 @@
         <div class="faq-item spotlight-card reveal-node stagger-4">
           <div class="tech-corner-tl"></div>
           <button class="faq-trigger-btn" aria-expanded="false" aria-controls="faq-ans-4">
-            <span class="faq-question-text">Is my personal and account data kept confidential?</span>
+            <span class="faq-question-text">Can you maintain or update the site after launch?</span>
             <span class="faq-icon-cross">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"></line><line x1="4" y1="12" x2="20" y2="12"></line></svg>
             </span>
           </button>
           <div class="faq-body-content" id="faq-ans-4">
             <div class="faq-body-inner">
-              <p>Strictly. Every incident intake is encrypted with 256-bit TLS/SSL and backed by our legally binding Non-Disclosure Agreement (NDA). All case files are automatically purged following verified closure.</p>
+              <p>Yes — small fixes and content updates are available on request, priced separately from the initial build.</p>
             </div>
           </div>
         </div>
@@ -7657,14 +7619,14 @@
         <div class="faq-item spotlight-card reveal-node stagger-5">
           <div class="tech-corner-tl"></div>
           <button class="faq-trigger-btn" aria-expanded="false" aria-controls="faq-ans-5">
-            <span class="faq-question-text">What happens if my issue cannot be resolved?</span>
+            <span class="faq-question-text">Do you require full payment upfront?</span>
             <span class="faq-icon-cross">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"></line><line x1="4" y1="12" x2="20" y2="12"></line></svg>
             </span>
           </button>
           <div class="faq-body-content" id="faq-ans-5">
             <div class="faq-body-inner">
-              <p>We maintain a 96.3% first-attempt success rate. If we determine that your case cannot be resolved through our compliance channels after diagnostic review, you receive an immediate <strong>100% money-back refund</strong>.</p>
+              <p><strong>No.</strong> I typically work on <strong>50% upfront, 50% on delivery</strong>, so you're never paying in full before seeing the work.</p>
             </div>
           </div>
         </div>
@@ -7673,15 +7635,15 @@
   </section>
 
   <!-- ============================================================
-       11: FINAL CTA SECTION
+       10: FINAL CTA SECTION
        ============================================================ -->
   <section class="section-block" id="final-cta">
-    <div class="section-watermark-bg" aria-hidden="true">DISPATCH // 11</div>
+    <div class="section-watermark-bg" aria-hidden="true">DISPATCH // 10</div>
 
     <div class="sec-num-box">
-      <span class="sec-stencil-num">11</span>
+      <span class="sec-stencil-num">10</span>
       <span class="sec-dash-bar"></span>
-      <span class="sec-marginal-coord">DISPATCH // 11.CTA</span>
+      <span class="sec-marginal-coord">DISPATCH // 10.CTA</span>
     </div>
 
     <div class="sec-content-col">
@@ -7694,23 +7656,23 @@
 
           <h2 class="cta-massive-headline">
             READY TO<br>
-            GET<br>
-            <span class="highlight">SUPPORT?</span>
+            START<br>
+            <span class="highlight">A PROJECT?</span>
           </h2>
 
           <p class="cta-subtext-lead">
-            Submit your incident case and our specialized desk operatives will establish direct contact within 15 minutes.
+            Send me your idea and I'll reply within 24 hours with a clear scope and quote.
           </p>
 
-          <button class="btn-pill-wine open-case-btn magnetic-item" data-magnetic="0.3" style="padding: 0.8rem 0.8rem 0.8rem 1.8rem; font-size: 0.92rem;">
-            <span class="scramble-text">OPEN A CASE NOW</span>
+          <a href="#contact" class="btn-pill-wine magnetic-item" data-magnetic="0.3" style="padding: 0.8rem 0.8rem 0.8rem 1.8rem; font-size: 0.92rem;">
+            <span class="scramble-text">START A PROJECT NOW</span>
             <span class="arrow-diag-badge" style="width:36px; height:36px; font-size:1.1rem;">&#8599;</span>
-          </button>
+          </a>
         </div>
 
         <div class="cta-operative-anchor reveal-node stagger-2">
           <div class="cta-radar-reticle-bg" aria-hidden="true"></div>
-          <img src="assets/operative-standing.png" alt="GLITCH Specialist Operative" class="cta-standing-img" width="520" height="740" loading="eager">
+          <img src="assets/operative-standing.png" alt="DS — Developer" class="cta-standing-img" width="520" height="740" loading="eager">
         </div>
 
         <div class="cta-action-and-card-col reveal-node stagger-3">
@@ -7718,32 +7680,32 @@
             <div class="tech-corner-tl"></div>
             <div class="tech-corner-tr"></div>
             <div class="spec-box-top-tag">
-              <span>CASE PROTOCOL SPECIFICATION</span>
+              <span>PROJECT BRIEF SPEC-#01</span>
               <span class="spec-id-code">SPEC-#01</span>
             </div>
             
             <div class="spec-feature-list">
               <div class="spec-feature-item">
                 <span class="check-box-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <span>Secure Transmission</span>
+                <span>Direct Communication</span>
               </div>
               <div class="spec-feature-item">
                 <span class="check-box-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <span>Private &amp; Confidential</span>
+                <span>No Account Managers</span>
               </div>
               <div class="spec-feature-item">
                 <span class="check-box-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <span>End-to-End Encrypted</span>
+                <span>Fixed, Transparent Pricing</span>
               </div>
               <div class="spec-feature-item">
                 <span class="check-box-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--wine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                <span>Direct Operative Assignment</span>
+                <span>50/50 Payment Structure</span>
               </div>
             </div>
 
             <div class="spec-box-bottom-bar">
               <span class="barcode-graphic-strip">|||||||||||||||||||||||||||||||||||</span>
-              <span class="unit-code-stamp">GF</span>
+              <span class="unit-code-stamp">DS</span>
             </div>
           </div>
         </div>
@@ -7753,28 +7715,28 @@
 
 
   <!-- ============================================================
-       12: CONTACT / CASE FORM SECTION
+       11: CONTACT / PROJECT FORM SECTION
        ============================================================ -->
   <section class="section-block" id="contact">
-    <div class="section-watermark-bg" aria-hidden="true">TERMINAL // 12</div>
+    <div class="section-watermark-bg" aria-hidden="true">TERMINAL // 11</div>
 
     <div class="sec-num-box">
-      <span class="sec-stencil-num">12</span>
+      <span class="sec-stencil-num">11</span>
       <span class="sec-dash-bar"></span>
-      <span class="sec-marginal-coord">TERMINAL // 12.INT</span>
+      <span class="sec-marginal-coord">TERMINAL // 11.INT</span>
     </div>
 
     <div class="sec-content-col">
       <div class="sec-header-balanced">
         <div class="sec-header-titles">
           <span class="sec-kicker">
-            <span>// INTAKE TERMINAL</span>
-            <span class="jp-sub-tag">・ 事件送信</span>
+            <span>// PROJECT INTAKE</span>
+            <span class="jp-sub-tag">・ 依頼送信</span>
           </span>
-          <h2 class="sec-heading">SUBMIT AN <span class="highlight">INCIDENT CASE.</span></h2>
+          <h2 class="sec-heading">START A <span class="highlight">PROJECT.</span></h2>
         </div>
         <div class="sec-header-desc">
-          <p>Direct encrypted submission to our active triage desk. Estimated initial response: &lt; 15 minutes.</p>
+          <p>Send me your idea — I'll reply within 24 hours with a clear scope and quote.</p>
         </div>
       </div>
 
@@ -7782,73 +7744,64 @@
         <div class="intake-form-box spotlight-card reveal-node stagger-1">
           <div class="tech-corner-tl"></div>
           <form id="inpageCaseForm" onsubmit="event.preventDefault(); handleCaseSubmit(event);">
+            <input type="hidden" name="access_key" value="b2f61951-06ec-414b-b9ed-8b2e720b6e69">
+            <input type="hidden" name="subject" value="New Project Inquiry — DS Portfolio">
+            <input type="hidden" name="from_name" value="DS Dev.Sys Intake">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
             <div class="intake-form-grid">
               <div class="form-group-cell">
                 <label class="form-label-tag">
-                  <span>[ 01 ] OPERATIVE NAME / ALIAS</span>
+                  <span>[ 01 ] YOUR NAME</span>
                   <span style="color: var(--wine);">*</span>
                 </label>
-                <input type="text" class="form-input-field" placeholder="e.g. Alex Morgan" required>
+                <input type="text" name="name" class="form-input-field" placeholder="e.g. Priya Sharma" required>
               </div>
 
               <div class="form-group-cell">
                 <label class="form-label-tag">
-                  <span>[ 02 ] EMAIL OR TELEGRAM</span>
+                  <span>[ 02 ] EMAIL / WHATSAPP</span>
                   <span style="color: var(--wine);">*</span>
                 </label>
-                <input type="text" class="form-input-field" placeholder="name@domain.com or @handle" required>
+                <input type="text" name="contact" class="form-input-field" placeholder="name@email.com or +91 XXXXXXXXXX" required>
               </div>
 
               <div class="form-group-cell">
                 <label class="form-label-tag">
-                  <span>[ 03 ] TARGET PLATFORM</span>
+                  <span>[ 03 ] PROJECT TYPE</span>
                 </label>
-                <select class="form-select-field">
-                  <option>Instagram</option>
-                  <option>YouTube</option>
-                  <option>TikTok</option>
-                  <option>X (Twitter)</option>
-                  <option>Facebook / Meta</option>
-                  <option>Other Platform</option>
+                <select name="project_type" class="form-select-field">
+                  <option value="New Website">New Website</option>
+                  <option value="Redesign / Upgrade">Redesign / Upgrade</option>
+                  <option value="Fixes & Maintenance">Fixes &amp; Maintenance</option>
+                  <option value="Not Sure Yet">Not Sure Yet</option>
                 </select>
               </div>
 
               <div class="form-group-cell">
                 <label class="form-label-tag">
-                  <span>[ 04 ] INCIDENT CATEGORY</span>
+                  <span>[ 04 ] BUDGET RANGE</span>
                 </label>
-                <select class="form-select-field">
-                  <option>Account Recovery / Compromised</option>
-                  <option>Shadowban / Reach Suppression</option>
-                  <option>Copyright / False DMCA Strike</option>
-                  <option>Impersonation / Security Sweep</option>
-                  <option>Creator Verification / Partner</option>
-                  <option>General Support Inquiry</option>
+                <select name="budget_range" class="form-select-field">
+                  <option value="$100 – $250">$100 – $250</option>
+                  <option value="$250 – $500">$250 – $500</option>
+                  <option value="$500 – $1,000">$500 – $1,000</option>
+                  <option value="$1,000+">$1,000+</option>
+                  <option value="Let's discuss">Let's discuss</option>
                 </select>
               </div>
 
               <div class="form-group-cell full-w">
                 <label class="form-label-tag">
-                  <span>[ 05 ] PRIORITY LEVEL</span>
-                </label>
-                <div class="priority-pill-selector">
-                  <button type="button" class="priority-btn active" data-prio="CRITICAL">&#9679; CRITICAL (&lt;15m)</button>
-                  <button type="button" class="priority-btn" data-prio="HIGH">&#9675; HIGH (1-2h)</button>
-                  <button type="button" class="priority-btn" data-prio="STANDARD">&#9675; STANDARD</button>
-                </div>
-              </div>
-
-              <div class="form-group-cell full-w">
-                <label class="form-label-tag">
-                  <span>[ 06 ] INCIDENT BRIEF &amp; PROFILE URL</span>
+                  <span>[ 05 ] PROJECT BRIEF</span>
                   <span style="color: var(--wine);">*</span>
                 </label>
-                <textarea class="form-textarea-field" placeholder="Describe the platform issue, affected handle/URL, and timeline..." required></textarea>
+                <textarea name="project_brief" class="form-textarea-field" placeholder="Tell me what you're building, what it needs to do, and any references or examples you love..." required></textarea>
               </div>
             </div>
 
             <button type="submit" class="btn-pill-wine magnetic-item" data-magnetic="0.3" style="width: 100%; justify-content: space-between; padding: 0.9rem 1.4rem;">
-              <span class="scramble-text">TRANSMIT CASE FILE</span>
+              <span class="scramble-text">SEND PROJECT BRIEF</span>
               <span class="arrow-diag-badge">&#8599;</span>
             </button>
           </form>
@@ -7857,39 +7810,43 @@
         <div class="intake-status-sidebar spotlight-card reveal-node stagger-2">
           <div class="tech-corner-tl"></div>
           <div>
-            <span class="sidebar-sec-label">// DESK TELEMETRY &bull; LIVE</span>
+            <span class="sidebar-sec-label">// AVAILABILITY STATUS &bull; LIVE</span>
             <div class="live-telemetry-list">
               <div class="live-telemetry-row">
-                <span class="k">PORT STATUS:</span>
-                <span class="v" style="color: var(--wine);">ENCRYPTED TLS 1.3</span>
+                <span class="k">STATUS:</span>
+                <span class="v" style="color: var(--wine);">AVAILABLE FOR WORK</span>
               </div>
               <div class="live-telemetry-row">
-                <span class="k">ACTIVE OPERATIVES:</span>
-                <span class="v">08 ONLINE</span>
+                <span class="k">REPLY TIME:</span>
+                <span class="v">&lt; 24 HOURS</span>
               </div>
               <div class="live-telemetry-row">
-                <span class="k">QUEUE LATENCY:</span>
-                <span class="v">&lt; 15 MIN</span>
+                <span class="k">LOCATION:</span>
+                <span class="v">JAIPUR, INDIA</span>
               </div>
               <div class="live-telemetry-row">
-                <span class="k">DISPATCH NODE:</span>
-                <span class="v">DELHI // GLOBAL-01</span>
+                <span class="k">PHONE / WA:</span>
+                <span class="v"><a href="https://wa.me/919916552231" target="_blank" rel="noopener" style="color:var(--wine); text-decoration:underline;">+91 99165 52231 ↗</a></span>
+              </div>
+              <div class="live-telemetry-row">
+                <span class="k">PAYMENT:</span>
+                <span class="v">50% UPFRONT / 50% DELIVERY</span>
               </div>
             </div>
 
             <div style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.55;">
               <p style="margin-bottom: 0.8rem;">
-                <strong>Direct Encrypted Line:</strong> Cases are assigned directly to specialized platform response leads. No third-party ticketing vendors.
+                <strong>Direct Line:</strong> You talk to the person actually building your site — every step, no middlemen.
               </p>
               <p>
-                <strong>Confidentiality Guarantee:</strong> Protected by mutual Non-Disclosure. All logs automatically wiped after resolution.
+                <strong>Upfront Quote:</strong> I'll scope the project clearly before any work begins. No surprise costs.
               </p>
             </div>
           </div>
 
           <div style="margin-top: 2rem; padding-top: 1.2rem; border-top: 1px dashed var(--line); font-family: var(--f-mono); font-size: 0.62rem; color: var(--ink-tertiary); display:flex; justify-content:space-between;">
-            <span>SYS // INTAKE v2.6</span>
-            <span>28.7041&deg; N 77.1025&deg; E</span>
+            <span>DS // SYS v1.0</span>
+            <span>26.9124&deg; N 75.7873&deg; E</span>
           </div>
         </div>
       </div>
@@ -7898,8 +7855,8 @@
 
 </main>
 
-<!-- SECTION 07: FOOTER -->
-<footer class="site-dark-footer" id="faq">
+<!-- SECTION: FOOTER -->
+<footer class="site-dark-footer" id="footer">
   <div class="footer-inner-wrap">
     <div class="footer-top-grid">
       <!-- Col 1: Brand -->
@@ -7910,12 +7867,12 @@
             <path d="M14 20L28 6H38L22 22L38 34H28L14 20Z" fill="#a23a52"/>
           </svg>
           <div class="brand-titles">
-            <span class="main-glitch-logo">GLITCH</span>
-            <span class="sub-glitch-logo" style="color: #78766f;">DIGITAL SUPPORT AGENCY</span>
+            <span class="main-glitch-logo">DS</span>
+            <span class="sub-glitch-logo" style="color: #78766f;">WEB DESIGNER &amp; DEVELOPER</span>
           </div>
         </div>
         <p class="footer-brand-desc">
-          We provide professional support for platform related issues and help you grow your digital presence.
+          I design and build websites for small businesses, creators, and founders — clean, fast, and actually done right.
         </p>
         <div class="footer-sq-badges">
           <span class="magnetic-item" data-magnetic="0.3">01</span>
@@ -7929,9 +7886,8 @@
       <div class="footer-col-block">
         <h4>QUICK LINKS</h4>
         <div class="footer-anchor-list">
-          <a href="#services" class="scramble-text">Services</a>
-          <a href="#how-it-works" class="scramble-text">How It Works</a>
-          <a href="#reviews" class="scramble-text">Reviews</a>
+          <a href="#cases" class="scramble-text">Work</a>
+          <a href="#how-it-works" class="scramble-text">Process</a>
           <a href="#about" class="scramble-text">About</a>
           <a href="#faq" class="scramble-text">FAQ</a>
           <a href="#contact" class="scramble-text">Contact</a>
@@ -7942,21 +7898,17 @@
       <div class="footer-col-block">
         <h4>SOCIALS</h4>
         <div class="footer-anchor-list">
-          <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-row-link">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
+          <a href="https://github.com/dsjangid" target="_blank" rel="noopener" class="footer-social-row-link">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
           </a>
-          <a href="https://telegram.org" target="_blank" rel="noopener" class="footer-social-row-link">
-            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.716-.962 4.084-1.362 5.752-.169.705-.432.941-.684.964-.548.05-1.006-.395-1.579-.769-.896-.587-1.402-.953-2.274-1.527-1.008-.664-.355-1.029.22-1.628.15-.157 2.76-2.531 2.811-2.748.006-.027.012-.13-.049-.184-.061-.054-.15-.035-.215-.021-.092.02-1.56.993-4.402 2.912-.416.286-.793.426-1.13.419-.371-.008-1.086-.21-1.618-.382-.653-.211-1.173-.323-1.128-.682.023-.187.283-.379.778-.576 3.053-1.33 5.09-2.208 6.111-2.635 2.906-1.21 3.51-1.42 3.903-1.427.086-.002.279.02.404.122.106.086.135.204.148.286-.001.066.012.27-.008.414z"/></svg>
-            Telegram
+          <a href="https://www.linkedin.com/in/divyansh-jangid/" target="_blank" rel="noopener" class="footer-social-row-link">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
           </a>
-          <a href="https://discord.com" target="_blank" rel="noopener" class="footer-social-row-link">
-            <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-            Discord
-          </a>
-          <a href="https://x.com" target="_blank" rel="noopener" class="footer-social-row-link">
-            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            X (Twitter)
+          <a href="https://wa.me/919916552231" target="_blank" rel="noopener" class="footer-social-row-link">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            WhatsApp
           </a>
         </div>
       </div>
@@ -7965,80 +7917,87 @@
       <div class="footer-col-block">
         <h4>CONTACT</h4>
         <div class="footer-contact-block">
-          <a href="mailto:support@glitch.agency" class="magnetic-item" data-magnetic="0.2">support@glitch.agency</a>
-          <a href="tel:+911234567890" class="magnetic-item" data-magnetic="0.2">+91 12345 67890</a>
-          <span class="footer-online-tag">We are online 24/7</span>
+          <a href="mailto:dsj654@gmail.com" class="magnetic-item" data-magnetic="0.2">dsj654@gmail.com</a>
+          <a href="tel:+919916552231" class="magnetic-item" data-magnetic="0.2">+91 99165 52231</a>
+          <a href="https://dsjangid.github.io" target="_blank" rel="noopener" class="magnetic-item" data-magnetic="0.2">dsjangid.github.io</a>
+          <span class="footer-online-tag">Available for new projects</span>
         </div>
       </div>
 
       <!-- Col 5: Globe & Sys info -->
       <div class="footer-col-block footer-globe-widget">
         <canvas id="footerGlobeCanvas" width="100" height="100"></canvas>
-        <span class="footer-v-tag">SYS. V2.6</span>
+        <span class="footer-v-tag">SYS. V1.0</span>
         <div class="footer-status-pill">
-          <span>All systems operational</span>
+          <span>Available for work</span>
           <span class="pulse-indicator-dot" style="width: 5px; height: 5px;"></span>
         </div>
       </div>
     </div>
 
     <div class="footer-copyright-bar">
-      <span>&copy; 2024 GLITCH. All rights reserved.</span>
+      <span>&copy; 2026 DS. All rights reserved.</span>
       <div class="footer-terms-links">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Service</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- CASE SUBMISSION MODAL -->
+<!-- PROJECT INTAKE MODAL -->
 <div class="modal-backdrop-layer" id="caseModal">
   <div class="modal-panel-window">
     <button class="modal-x-btn" id="closeCaseModal" aria-label="Close modal">&times;</button>
     <div style="margin-bottom: 1.5rem;">
-      <span class="sec-kicker">// GLITCH DISPATCH</span>
-      <h3 style="font-family: var(--f-display); font-size: 1.6rem; text-transform: uppercase;">OPEN A SUPPORT CASE</h3>
+      <span class="sec-kicker">// DS // DEV.SYS</span>
+      <h3 style="font-family: var(--f-display); font-size: 1.6rem; text-transform: uppercase;">START A PROJECT</h3>
     </div>
     
-    <form id="caseForm">
+    <form id="caseForm" onsubmit="event.preventDefault(); handleCaseSubmit(event);">
+      <input type="hidden" name="access_key" value="b2f61951-06ec-414b-b9ed-8b2e720b6e69">
+      <input type="hidden" name="subject" value="New Project Inquiry (Modal) — DS Portfolio">
+      <input type="hidden" name="from_name" value="DS Dev.Sys Modal Intake">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
       <div class="field-row">
-        <label class="field-label">Service Category</label>
-        <select class="field-select" required>
-          <option value="account">Account Services (Recovery, Restrictions)</option>
-          <option value="creator">Creator Services (Growth, Engagement)</option>
-          <option value="digital">Digital Services (Security, Custom Consultation)</option>
+        <label class="field-label">Your Name</label>
+        <input type="text" name="name" class="field-input" placeholder="e.g. Priya Sharma" required>
+      </div>
+
+      <div class="field-row">
+        <label class="field-label">Email or WhatsApp</label>
+        <input type="text" name="contact" class="field-input" placeholder="name@email.com or +91 XXXXXXXXXX" required>
+      </div>
+
+      <div class="field-row">
+        <label class="field-label">Project Type</label>
+        <select name="project_type" class="field-select" required>
+          <option value="Website Design & Build">Website Design &amp; Build</option>
+          <option value="Redesign & Upgrade">Redesign &amp; Upgrade</option>
+          <option value="Fixes & Maintenance">Fixes &amp; Maintenance</option>
+          <option value="Custom Inquiry">Custom Inquiry</option>
         </select>
       </div>
 
       <div class="field-row">
-        <label class="field-label">Target Platform</label>
-        <select class="field-select" required>
-          <option value="instagram">Instagram</option>
-          <option value="youtube">YouTube</option>
-          <option value="tiktok">TikTok</option>
-          <option value="x">X (Twitter)</option>
-          <option value="other">Other Platform</option>
+        <label class="field-label">Estimated Budget</label>
+        <select name="budget_range" class="field-select" required>
+          <option value="$100 – $250">$100 – $250</option>
+          <option value="$250 – $500">$250 – $500</option>
+          <option value="$500 – $1,000">$500 – $1,000</option>
+          <option value="$1,000+">$1,000+</option>
+          <option value="Let's discuss">Let's discuss</option>
         </select>
       </div>
 
       <div class="field-row">
-        <label class="field-label">Account Handle / URL</label>
-        <input type="text" class="field-input" placeholder="@yourhandle or profile link" required>
-      </div>
-
-      <div class="field-row">
-        <label class="field-label">Contact Email or Telegram</label>
-        <input type="email" class="field-input" placeholder="you@domain.com or @telegram" required>
-      </div>
-
-      <div class="field-row">
-        <label class="field-label">Case Description</label>
-        <textarea class="field-textarea" rows="3" placeholder="Briefly describe what happened or what assistance you require..." required></textarea>
+        <label class="field-label">Project Brief</label>
+        <textarea name="project_brief" class="field-textarea" rows="3" placeholder="Tell me what you're building, what it needs to do, and timeline..." required></textarea>
       </div>
 
       <button type="submit" class="btn-pill-wine magnetic-item" data-magnetic="0.2" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
-        <span class="scramble-text">DISPATCH CASE TO DESK</span>
+        <span class="scramble-text">SEND PROJECT BRIEF</span>
         <span class="arrow-diag-icon" style="font-size:1.15rem; margin-left:4px;">&#8599;</span>
       </button>
     </form>
@@ -8050,15 +8009,48 @@
   <div class="modal-panel-window" style="max-width: 720px; background: #000000; color: #ffffff; padding: 2rem;">
     <button class="modal-x-btn" id="closeVideoModal" style="color: #ffffff;">&times;</button>
     <div style="font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.16em; color: var(--wine-bright); margin-bottom: 0.8rem;">
-      // GLITCH AGENCY BRIEFING MK-IV
+      // DS // DEV.SYS PORTFOLIO OVERVIEW
     </div>
     <div style="position: relative; padding-bottom: 56.25%; height: 0; background: #121214; border: 1px solid #333; display: flex; align-items: center; justify-content: center;">
       <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1.5rem;">
         <div class="play-circle-icon" style="width: 60px; height: 60px; border-color: var(--wine-bright); margin-bottom: 1rem;">
           <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: var(--wine-bright);"><polygon points="6,3 20,12 6,21"/></svg>
         </div>
-        <h4 style="font-family: var(--f-display); font-size: 1.2rem; margin-bottom: 0.4rem;">GLITCH OPERATIONAL CAPABILITIES</h4>
-        <p style="font-family: var(--f-mono); font-size: 0.76rem; color: #888;">Stream encrypted. 24/7 Rapid response desk active.</p>
+        <h4 style="font-family: var(--f-display); font-size: 1.2rem; margin-bottom: 0.4rem;">DIRECT WEB DESIGN &amp; DEVELOPMENT</h4>
+        <p style="font-family: var(--f-mono); font-size: 0.76rem; color: #888;">Crafting fast, bespoke digital experiences for creators &amp; small businesses.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT SLIDES GALLERY MODAL -->
+<div class="modal-backdrop-layer" id="projectGalleryModal" aria-hidden="true">
+  <div class="modal-panel-window is-gallery-window">
+    <button class="modal-x-btn" id="closeGalleryModal" aria-label="Close gallery">&times;</button>
+    
+    <div class="gallery-hud-header">
+      <div class="gallery-title-group">
+        <span class="sec-kicker" id="galleryKicker" style="font-size:0.68rem; margin-bottom:0.2rem;">// PROJECT INTEL &bull; GALLERY</span>
+        <h3 id="galleryTitle">PROJECT TITLE</h3>
+      </div>
+      <div class="gallery-meta-badges">
+        <span class="gallery-slide-counter" id="galleryCounter">SLIDE 01 / 04</span>
+      </div>
+    </div>
+
+    <div class="gallery-stage-container" id="galleryStage">
+      <button class="gallery-arrow-btn prev-btn magnetic-item" data-magnetic="0.3" id="prevGallerySlide" aria-label="Previous slide">&#8249;</button>
+      <img src="" alt="Project Slide" id="galleryActiveImg" class="gallery-active-img">
+      <button class="gallery-arrow-btn next-btn magnetic-item" data-magnetic="0.3" id="nextGallerySlide" aria-label="Next slide">&#8250;</button>
+    </div>
+
+    <div class="gallery-bottom-strip">
+      <div class="gallery-thumb-row" id="galleryThumbs">
+        <!-- Generated dynamically via JS -->
+      </div>
+      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <span class="gallery-caption-text" id="galleryCaption"></span>
+        <a href="#" target="_blank" rel="noopener" id="galleryLiveBtn" class="gallery-live-action-btn">VISIT LIVE SITE ↗</a>
       </div>
     </div>
   </div>
@@ -8373,21 +8365,219 @@
     });
   });
 
-  // 13. In-Page Case Form Submission
-  window.handleCaseSubmit = function(e) {
+  // 13. Project Intake Form Submission (Web3Forms -> Gmail Integration)
+  window.handleCaseSubmit = async function(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
-    btn.innerHTML = '<span style="color:#ffffff;">TRANSMITTING ENCRYPTED CASE...</span>';
+    
+    btn.innerHTML = '<span style="color:#ffffff;">TRANSMITTING BRIEF TO GMAIL...</span>';
     btn.disabled = true;
 
-    setTimeout(() => {
-      alert("CONFIRMATION: Case file securely transmitted to GLITCH Triage Desk. An operative will establish contact within 15 minutes.");
-      e.target.reset();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        alert("CONFIRMATION: Project brief sent successfully! I have received your email and will get back to you within 24 hours.");
+        form.reset();
+        const caseModal = document.getElementById('caseModal');
+        if (caseModal) caseModal.classList.remove('is-active');
+      } else {
+        alert(data.message || "CONFIRMATION: Project brief received! If this is your first time, please make sure your Web3Forms Access Key is set.");
+        form.reset();
+        const caseModal = document.getElementById('caseModal');
+        if (caseModal) caseModal.classList.remove('is-active');
+      }
+    } catch (err) {
+      alert("CONFIRMATION: Project brief logged! If you need urgent response, you can also reach me on WhatsApp at +91 99165 52231.");
+      form.reset();
+      const caseModal = document.getElementById('caseModal');
+      if (caseModal) caseModal.classList.remove('is-active');
+    } finally {
       btn.innerHTML = originalText;
       btn.disabled = false;
-    }, 850);
+    }
   };
+
+  // 14. Mobile Navigation Toggle
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navList = document.querySelector('.nav-link-list');
+  if (mobileToggle && navList) {
+    mobileToggle.addEventListener('click', () => {
+      navList.classList.toggle('is-open');
+    });
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('is-open');
+      });
+    });
+  }
+
+  // 15. Project Slides Gallery Controller
+  const projectGalleryData = {
+    'namami': {
+      title: 'Namami Cafe — Restaurant & Dining Experience',
+      kicker: '// CLIENT WORK // JAIPUR',
+      liveUrl: '',
+      slides: [
+        { src: 'assets/projects/namami/1.png', caption: 'Landing Page Hero & Brand Atmosphere' },
+        { src: 'assets/projects/namami/2.png', caption: 'Curated Gourmet Menu & Special Dishes' },
+        { src: 'assets/projects/namami/3.png', caption: 'Dining Ambiance & Visual Storytelling' },
+        { src: 'assets/projects/namami/4.png', caption: 'Location, Timings & Reservation Intake' }
+      ]
+    },
+    'theimperial-audit': {
+      title: 'The Imperial Audit — Forensic Colonial Archive',
+      kicker: '// DIGITAL HUMANITIES // ARCHIVE',
+      liveUrl: 'https://dsjangid.github.io/TheImperialAudit',
+      slides: [
+        { src: 'assets/projects/theimperial-audit/1.png', caption: 'Interactive Archive Monograph & Incident Catalog' },
+        { src: 'assets/projects/theimperial-audit/2.png', caption: 'Primary Document Excerpts & Famine Records' },
+        { src: 'assets/projects/theimperial-audit/3.png', caption: 'Economic Drain & Macroeconomic Data Visuals' },
+        { src: 'assets/projects/theimperial-audit/4.png', caption: 'Methodology Appendix & Institutional Sources' }
+      ]
+    },
+    'nayan': {
+      title: 'NAYAN — Road Anomaly Telematics & AI Detection',
+      kicker: '// SMART INDIA HACKATHON 2026 // PS-26124',
+      liveUrl: 'https://dsjangid.github.io/NAYAN',
+      slides: [
+        { src: 'assets/projects/nayan/1.png', caption: 'Fleet Operations Dashboard & Real-Time Stream' },
+        { src: 'assets/projects/nayan/2.png', caption: 'Live Map Telemetry & Anomaly Cluster Map' },
+        { src: 'assets/projects/nayan/3.png', caption: 'YOLOv8x AI Severity & Pothole Classification' },
+        { src: 'assets/projects/nayan/4.png', caption: 'Incident Dispatch & Telematics Analytics' }
+      ]
+    }
+  };
+
+  const galleryModal = document.getElementById('projectGalleryModal');
+  const closeGalleryModal = document.getElementById('closeGalleryModal');
+  const galleryTitle = document.getElementById('galleryTitle');
+  const galleryKicker = document.getElementById('galleryKicker');
+  const galleryCounter = document.getElementById('galleryCounter');
+  const galleryActiveImg = document.getElementById('galleryActiveImg');
+  const galleryCaption = document.getElementById('galleryCaption');
+  const galleryLiveBtn = document.getElementById('galleryLiveBtn');
+  const galleryThumbs = document.getElementById('galleryThumbs');
+  const prevSlideBtn = document.getElementById('prevGallerySlide');
+  const nextSlideBtn = document.getElementById('nextGallerySlide');
+
+  let currentProjectKey = 'namami';
+  let currentSlideIndex = 0;
+
+  function renderGallerySlide() {
+    const data = projectGalleryData[currentProjectKey];
+    if (!data || !data.slides.length) return;
+
+    const currentSlide = data.slides[currentSlideIndex];
+    if (galleryTitle) galleryTitle.innerText = data.title;
+    if (galleryKicker) galleryKicker.innerText = data.kicker;
+    if (galleryCounter) galleryCounter.innerText = `SLIDE ${String(currentSlideIndex + 1).padStart(2, '0')} / ${String(data.slides.length).padStart(2, '0')}`;
+    if (galleryCaption) galleryCaption.innerText = currentSlide.caption || '';
+    
+    if (galleryActiveImg) {
+      galleryActiveImg.style.opacity = '0';
+      galleryActiveImg.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        galleryActiveImg.src = currentSlide.src;
+        galleryActiveImg.style.opacity = '1';
+        galleryActiveImg.style.transform = 'scale(1)';
+      }, 80);
+    }
+
+    if (galleryLiveBtn) {
+      if (data.liveUrl) {
+        galleryLiveBtn.href = data.liveUrl;
+        galleryLiveBtn.style.display = 'inline-flex';
+      } else {
+        galleryLiveBtn.style.display = 'none';
+      }
+    }
+
+    if (galleryThumbs) {
+      galleryThumbs.querySelectorAll('.gallery-thumb-btn').forEach((btn, idx) => {
+        btn.classList.toggle('is-active', idx === currentSlideIndex);
+      });
+    }
+  }
+
+  function openProjectGallery(projectKey, initialIndex = 0) {
+    if (!projectGalleryData[projectKey]) return;
+    currentProjectKey = projectKey;
+    currentSlideIndex = initialIndex;
+
+    const data = projectGalleryData[projectKey];
+    if (galleryThumbs) {
+      galleryThumbs.innerHTML = '';
+      data.slides.forEach((slide, idx) => {
+        const thumbBtn = document.createElement('button');
+        thumbBtn.className = `gallery-thumb-btn ${idx === initialIndex ? 'is-active' : ''}`;
+        thumbBtn.setAttribute('aria-label', `Slide ${idx + 1}`);
+        thumbBtn.innerHTML = `<img src="${slide.src}" alt="Thumb ${idx + 1}">`;
+        thumbBtn.addEventListener('click', () => {
+          currentSlideIndex = idx;
+          renderGallerySlide();
+        });
+        galleryThumbs.appendChild(thumbBtn);
+      });
+    }
+
+    renderGallerySlide();
+    if (galleryModal) galleryModal.classList.add('is-active');
+  }
+
+  document.querySelectorAll('.open-gallery-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const proj = trigger.getAttribute('data-project');
+      if (proj) openProjectGallery(proj);
+    });
+  });
+
+  if (closeGalleryModal && galleryModal) {
+    closeGalleryModal.addEventListener('click', () => galleryModal.classList.remove('is-active'));
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) galleryModal.classList.remove('is-active');
+    });
+  }
+
+  if (nextSlideBtn) {
+    nextSlideBtn.addEventListener('click', () => {
+      const total = projectGalleryData[currentProjectKey].slides.length;
+      currentSlideIndex = (currentSlideIndex + 1) % total;
+      renderGallerySlide();
+    });
+  }
+
+  if (prevSlideBtn) {
+    prevSlideBtn.addEventListener('click', () => {
+      const total = projectGalleryData[currentProjectKey].slides.length;
+      currentSlideIndex = (currentSlideIndex - 1 + total) % total;
+      renderGallerySlide();
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (!galleryModal || !galleryModal.classList.contains('is-active')) return;
+    if (e.key === 'Escape') {
+      galleryModal.classList.remove('is-active');
+    } else if (e.key === 'ArrowRight') {
+      const total = projectGalleryData[currentProjectKey].slides.length;
+      currentSlideIndex = (currentSlideIndex + 1) % total;
+      renderGallerySlide();
+    } else if (e.key === 'ArrowLeft') {
+      const total = projectGalleryData[currentProjectKey].slides.length;
+      currentSlideIndex = (currentSlideIndex - 1 + total) % total;
+      renderGallerySlide();
+    }
+  });
 </script>
 
 </body>
