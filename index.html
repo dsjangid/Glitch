@@ -7736,6 +7736,10 @@
               <span class="spec-v">Namami Cafe &amp; Kitchen</span>
             </div>
             <div class="case-spec-row">
+              <span class="spec-k">REPOSITORY:</span>
+              <span class="spec-v"><a href="https://github.com/dsjangid/Namami" target="_blank" rel="noopener" style="color: var(--wine); text-decoration: underline;">github.com/dsjangid/Namami ↗</a></span>
+            </div>
+            <div class="case-spec-row">
               <span class="spec-k">GALLERY:</span>
               <span class="spec-v"><button type="button" class="open-gallery-trigger" data-project="namami" style="background:none; border:none; color:var(--wine); cursor:pointer; font-family:var(--f-mono); font-size:0.75rem; font-weight:700; text-decoration:underline; padding:0;">View 4 Slides ↗</button></span>
             </div>
@@ -8738,7 +8742,7 @@
     'namami': {
       title: 'Namami Cafe — Restaurant & Dining Experience',
       kicker: '// CLIENT WORK // JAIPUR',
-      liveUrl: '',
+      liveUrl: 'https://github.com/dsjangid/Namami',
       slides: [
         { src: 'assets/projects/namami/1.png', caption: 'Landing Page Hero & Brand Atmosphere' },
         { src: 'assets/projects/namami/2.png', caption: 'Curated Gourmet Menu & Special Dishes' },
@@ -8808,6 +8812,11 @@
     if (galleryLiveBtn) {
       if (data.liveUrl) {
         galleryLiveBtn.href = data.liveUrl;
+        if (data.liveUrl.includes('github.com')) {
+          galleryLiveBtn.innerHTML = 'VIEW SOURCE ON GITHUB ↗';
+        } else {
+          galleryLiveBtn.innerHTML = 'VISIT LIVE SITE ↗';
+        }
         galleryLiveBtn.style.display = 'inline-flex';
       } else {
         galleryLiveBtn.style.display = 'none';
