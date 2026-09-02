@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DS // DEV.SYS — Web Designer & Developer</title>
+<title>Glitch — Web Designer & Developer</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="alternate icon" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,700&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -260,6 +262,28 @@
   }
   .circle-nav-btn:active {
     transform: scale(0.95);
+  }
+
+  .svc-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--f-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--ink-secondary);
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+  .svc-all-btn:hover {
+    color: var(--wine);
+  }
+  .svc-all-btn:hover .circle-nav-btn {
+    background: var(--wine);
+    border-color: var(--wine);
+    color: #ffffff;
+    transform: scale(1.08);
   }
 
   /* ============================================================
@@ -1877,7 +1901,7 @@
     background: rgba(10, 10, 12, 0.75);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    z-index: 1000;
+    z-index: 100000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2270,6 +2294,8 @@
   /* ============================================================
      PRELOADER STYLES
      ============================================================ */
+  #sitePreloader,
+  .preloader-overlay,
   #glitchPreloader {
     position: fixed;
     inset: 0;
@@ -2281,6 +2307,8 @@
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: all;
   }
+  #sitePreloader.preloader-hidden,
+  .preloader-overlay.preloader-hidden,
   #glitchPreloader.preloader-hidden {
     opacity: 0;
     visibility: hidden;
@@ -6146,7 +6174,7 @@
   }
 
   .faq-body-content {
-    padding: 0 1.4rem 1.2rem !important;
+    padding: 0 !important;
     font-size: 0.92rem;
     color: var(--ink-secondary);
     line-height: 1.5;
@@ -6446,23 +6474,6 @@
   }
 
   /* ============================================================
-     15. RESPONSIVE & MOBILE TOUCH OPTIMIZATION LAYER
-     ============================================================ */
-  @media (hover: none), (pointer: coarse) {
-    #cursorDot, #cursorRing {
-      display: none !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
-    * {
-      cursor: auto !important;
-    }
-    .magnetic-item {
-      transform: none !important;
-    }
-  }
-
-  /* ============================================================
      15. COMPREHENSIVE MOBILE & TOUCH OPTIMIZATION LAYER
      ============================================================ */
   * {
@@ -6604,18 +6615,21 @@
     .hero-watermark-bg {
       display: none !important;
     }
+    .hero-main-col,
     .hero-text-block {
       width: 100% !important;
       max-width: 100% !important;
       padding: 0 !important;
       box-sizing: border-box !important;
     }
+    .hero-giant-head,
     .hero-main-h1 {
-      font-size: clamp(2.4rem, 10vw, 3.8rem) !important;
+      font-size: clamp(2.35rem, 9.5vw, 3.8rem) !important;
       line-height: 1.04 !important;
       margin-bottom: 1.2rem !important;
       word-break: break-word !important;
     }
+    .hero-lead-text,
     .hero-intro-lead-p {
       font-size: 0.95rem !important;
       line-height: 1.6 !important;
@@ -6631,10 +6645,18 @@
       gap: 0.8rem !important;
       box-sizing: border-box !important;
     }
+    .hud-globe-cell {
+      border-right: none !important;
+      border-bottom: 1px dashed rgba(184, 180, 170, 0.4) !important;
+      padding: 0.4rem 0 0.6rem !important;
+      justify-content: center !important;
+    }
     .hud-stat-col {
       border-right: none !important;
       border-bottom: 1px dashed rgba(184, 180, 170, 0.4) !important;
       padding-bottom: 0.6rem !important;
+      padding-left: 0.2rem !important;
+      padding-right: 0.2rem !important;
     }
     .hud-stat-col:last-child {
       border-bottom: none !important;
@@ -6647,6 +6669,7 @@
       width: 100% !important;
       max-width: 100% !important;
       height: 310px !important;
+      min-height: 0 !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
@@ -6753,6 +6776,7 @@
       position: relative !important;
       width: 100% !important;
       height: 290px !important;
+      min-height: 0 !important;
       background: rgba(240, 238, 232, 0.8) !important;
       border: 1px solid var(--line) !important;
       border-radius: 4px !important;
@@ -6871,6 +6895,7 @@
       position: relative !important;
       width: 100% !important;
       height: 290px !important;
+      min-height: 0 !important;
       background: rgba(240, 238, 232, 0.8) !important;
       border: 1px solid var(--line) !important;
       border-radius: 4px !important;
@@ -6914,12 +6939,14 @@
     }
 
     /* 08: Cases / Selected Work */
-    .cases-grid {
+    .cases-grid,
+    .cases-three-grid {
       grid-template-columns: 1fr !important;
       gap: 1.5rem !important;
       width: 100% !important;
     }
-    .case-card {
+    .case-card,
+    .case-dossier-card {
       width: 100% !important;
       box-sizing: border-box !important;
     }
@@ -6934,6 +6961,7 @@
     }
 
     /* 09: FAQ Section */
+    .faq-accordion-wrap,
     .faq-list-accordion {
       width: 100% !important;
       display: flex !important;
@@ -6946,13 +6974,26 @@
     }
     .faq-trigger-btn {
       width: 100% !important;
-      padding: 1rem !important;
+      padding: 1.1rem 1.2rem !important;
       box-sizing: border-box !important;
       display: flex !important;
       justify-content: space-between !important;
       align-items: center !important;
       text-align: left !important;
       gap: 0.8rem !important;
+    }
+    .faq-body-content,
+    .faq-answer-panel {
+      padding: 0 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .faq-body-inner,
+    .faq-answer-inner {
+      padding: 0 1.2rem 1.1rem !important;
+      font-size: 0.9rem !important;
+      line-height: 1.5 !important;
+      box-sizing: border-box !important;
     }
 
     /* 10: Final CTA Section & Character 4 */
@@ -6969,6 +7010,7 @@
       position: relative !important;
       width: 100% !important;
       height: 290px !important;
+      min-height: 0 !important;
       background: rgba(240, 238, 232, 0.8) !important;
       border: 1px solid var(--line) !important;
       border-radius: 4px !important;
@@ -7010,7 +7052,8 @@
       gap: 1.5rem !important;
       width: 100% !important;
     }
-    .intake-form-box {
+    .intake-form-box,
+    .terminal-form-card {
       width: 100% !important;
       box-sizing: border-box !important;
       padding: 1.4rem 1rem !important;
@@ -7022,7 +7065,8 @@
     .form-group-cell.full-w {
       grid-column: span 1 !important;
     }
-    .intake-status-sidebar {
+    .intake-status-sidebar,
+    .desk-telemetry-sidebar {
       width: 100% !important;
       box-sizing: border-box !important;
       padding: 1.4rem 1rem !important;
@@ -7071,6 +7115,7 @@
 
     /* Modals & Slide Gallery on Mobile */
     .modal-backdrop-layer {
+      z-index: 100000 !important;
       padding: 0.75rem !important;
     }
     .modal-panel-window {
@@ -7096,6 +7141,7 @@
     .gallery-stage-container {
       height: 240px !important;
       max-height: 38vh !important;
+      touch-action: pan-y !important;
     }
     .gallery-arrow-btn {
       width: 38px !important;
@@ -7110,6 +7156,13 @@
       gap: 0.8rem !important;
       margin-top: 0.8rem !important;
     }
+    .gallery-bottom-strip > div {
+      width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.6rem !important;
+    }
     .gallery-thumb-btn {
       width: 52px !important;
       height: 36px !important;
@@ -7117,6 +7170,8 @@
     .gallery-live-action-btn {
       width: 100% !important;
       justify-content: center !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
     }
   }
 
@@ -8715,15 +8770,16 @@
     if (progressBar) progressBar.style.width = progress + '%';
   }, { passive: true });
 
-    // 2. High-Precision Spring Cursor (Fine Pointer Only)
-  const cursorDot = document.getElementById('cursorDot');
-  const cursorRing = document.getElementById('cursorRing');
-  let mouseX = -100, mouseY = -100;
-  let ringX = -100, ringY = -100;
-  let cursorActive = false;
-  const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  // 2. High-Precision Spring Cursor, Magnetic Elements & Parallax (Fine Pointer Only)
+  const isFinePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   if (isFinePointer) {
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
+    let cursorActive = false;
+
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -8743,82 +8799,82 @@
       cursorActive = false;
       document.body.classList.remove('cursor-active');
     });
-  }
 
-  function renderCursor() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    if (cursorRing) {
-      cursorRing.style.left = ringX + 'px';
-      cursorRing.style.top = ringY + 'px';
+    function renderCursor() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      if (cursorRing) {
+        cursorRing.style.left = ringX + 'px';
+        cursorRing.style.top = ringY + 'px';
+      }
+      requestAnimationFrame(renderCursor);
     }
     requestAnimationFrame(renderCursor);
-  }
-  requestAnimationFrame(renderCursor);
 
-  // Cursor Hover Scale on Interactive Elements
-  const hoverTargets = document.querySelectorAll('a, button, input, select, textarea, .magnetic-item, .faq-trigger-btn, .spotlight-card, .dot-pill');
-  hoverTargets.forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-  });
-
-  // 3. Dynamic Cursor Spotlight on Cards
-  const spotlightCards = document.querySelectorAll('.spotlight-card');
-  spotlightCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
+    // Cursor Hover Scale on Interactive Elements
+    const hoverTargets = document.querySelectorAll('a, button, input, select, textarea, .magnetic-item, .faq-trigger-btn, .spotlight-card, .dot-pill');
+    hoverTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
-  });
 
-  // 4. Parallax on All 3 Cyber Characters & HUD Rings
-  function initParallax(stageId, visualId, ringsId) {
-    const stage = document.getElementById(stageId) || document.querySelector('.' + stageId);
-    const visual = document.getElementById(visualId) || document.querySelector('.' + visualId);
-    const rings = document.getElementById(ringsId) || document.querySelector('.' + ringsId);
+    // Parallax on All 3 Cyber Characters & HUD Rings
+    function initParallax(stageId, visualId, ringsId) {
+      const stage = document.getElementById(stageId) || document.querySelector('.' + stageId);
+      const visual = document.getElementById(visualId) || document.querySelector('.' + visualId);
+      const rings = document.getElementById(ringsId) || document.querySelector('.' + ringsId);
 
-    if (stage && visual) {
-      stage.addEventListener('mousemove', (e) => {
-        const rect = stage.getBoundingClientRect();
-        const relX = (e.clientX - rect.left) / rect.width - 0.5;
-        const relY = (e.clientY - rect.top) / rect.height - 0.5;
-        visual.style.transform = `translate3d(${relX * 12}px, ${relY * 8}px, 0) scale(1.02)`;
-        if (rings) {
-          rings.style.transform = `translate(calc(-50% + ${relX * -16}px), calc(-50% + ${relY * -12}px))`;
-        }
-      });
-      stage.addEventListener('mouseleave', () => {
-        visual.style.transform = 'translate3d(0, 0, 0) scale(1)';
-        if (rings) {
-          rings.style.transform = 'translate(-50%, -50%)';
-        }
-      });
+      if (stage && visual) {
+        stage.addEventListener('mousemove', (e) => {
+          const rect = stage.getBoundingClientRect();
+          const relX = (e.clientX - rect.left) / rect.width - 0.5;
+          const relY = (e.clientY - rect.top) / rect.height - 0.5;
+          visual.style.transform = `translate3d(${relX * 12}px, ${relY * 8}px, 0) scale(1.02)`;
+          if (rings) {
+            rings.style.transform = `translate(calc(-50% + ${relX * -16}px), calc(-50% + ${relY * -12}px))`;
+          }
+        });
+        stage.addEventListener('mouseleave', () => {
+          visual.style.transform = 'translate3d(0, 0, 0) scale(1)';
+          if (rings) {
+            rings.style.transform = 'translate(-50%, -50%)';
+          }
+        });
+      }
     }
+    initParallax('heroOperativeStage', 'heroCyborgImg', 'heroHudRings');
+    initParallax('tv-center-visual', 'tv-kneeling-img', 'tv-hud-reticle-bg');
+    initParallax('cta-operative-anchor', 'cta-standing-img', 'cta-radar-reticle-bg');
+
+    // Magnetic Interactive Elements
+    const magneticItems = document.querySelectorAll('.magnetic-item');
+    magneticItems.forEach(item => {
+      const strength = parseFloat(item.getAttribute('data-magnetic') || '0.25');
+      item.addEventListener('mousemove', (e) => {
+        const rect = item.getBoundingClientRect();
+        const x = (e.clientX - (rect.left + rect.width / 2)) * strength;
+        const y = (e.clientY - (rect.top + rect.height / 2)) * strength;
+        item.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+      item.addEventListener('mouseleave', () => {
+        item.style.transform = 'translate3d(0, 0, 0)';
+      });
+    });
+
+    // Dynamic Cursor Spotlight on Cards
+    const spotlightCards = document.querySelectorAll('.spotlight-card');
+    spotlightCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
   }
-  initParallax('heroOperativeStage', 'heroCyborgImg', 'heroHudRings');
-  initParallax('tv-center-visual', 'tv-kneeling-img', 'tv-hud-reticle-bg');
-  initParallax('cta-operative-anchor', 'cta-standing-img', 'cta-radar-reticle-bg');
 
-  // 5. Magnetic Interactive Elements
-  const magneticItems = document.querySelectorAll('.magnetic-item');
-  magneticItems.forEach(item => {
-    const strength = parseFloat(item.getAttribute('data-magnetic') || '0.25');
-    item.addEventListener('mousemove', (e) => {
-      const rect = item.getBoundingClientRect();
-      const x = (e.clientX - (rect.left + rect.width / 2)) * strength;
-      const y = (e.clientY - (rect.top + rect.height / 2)) * strength;
-      item.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    });
-    item.addEventListener('mouseleave', () => {
-      item.style.transform = `translate3d(0, 0, 0)`;
-    });
-  });
-
-  // 6. Text Scramble Effect
+  // 3. Text Scramble Effect
   const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789//_#[]<>';
   document.querySelectorAll('.scramble-text').forEach(el => {
     const originalText = el.innerText;
@@ -8849,7 +8905,7 @@
     });
   });
 
-  // 7. Dual 3D Wireframe Globes (Hero Mini Globe & Footer Dark Globe)
+  // 4. Dual 3D Wireframe Globes (Hero Mini Globe & Footer Dark Globe)
   function createWireframeGlobe(canvasId, strokeColor, radius, speed) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
@@ -8890,7 +8946,14 @@
   createWireframeGlobe('hudMiniGlobeCanvas', '#8e8b82', 17, 0.02);
   createWireframeGlobe('footerGlobeCanvas', 'rgba(110, 26, 43, 0.65)', 42, 0.015);
 
-  // 8. Modals (Case Form & Video)
+  // Helper to sync body scroll lock
+  function syncBodyScrollLock() {
+    const anyModalOpen = document.querySelector('.modal-backdrop-layer.is-active') ||
+                         document.querySelector('.nav-link-list.is-open');
+    document.body.style.overflow = anyModalOpen ? 'hidden' : '';
+  }
+
+  // 5. Modals (Case Form & Video)
   const caseModal = document.getElementById('caseModal');
   const closeCaseModal = document.getElementById('closeCaseModal');
   const openCaseButtons = document.querySelectorAll('.open-case-btn');
@@ -8900,25 +8963,40 @@
   openCaseButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (caseModal) caseModal.classList.add('is-active');
+      if (caseModal) {
+        caseModal.classList.add('is-active');
+        syncBodyScrollLock();
+      }
     });
   });
 
   if (closeCaseModal && caseModal) {
-    closeCaseModal.addEventListener('click', () => caseModal.classList.remove('is-active'));
+    closeCaseModal.addEventListener('click', () => {
+      caseModal.classList.remove('is-active');
+      syncBodyScrollLock();
+    });
     caseModal.addEventListener('click', (e) => {
-      if (e.target === caseModal) caseModal.classList.remove('is-active');
+      if (e.target === caseModal) {
+        caseModal.classList.remove('is-active');
+        syncBodyScrollLock();
+      }
     });
   }
 
   if (closeVideoModal && videoModal) {
-    closeVideoModal.addEventListener('click', () => videoModal.classList.remove('is-active'));
+    closeVideoModal.addEventListener('click', () => {
+      videoModal.classList.remove('is-active');
+      syncBodyScrollLock();
+    });
     videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) videoModal.classList.remove('is-active');
+      if (e.target === videoModal) {
+        videoModal.classList.remove('is-active');
+        syncBodyScrollLock();
+      }
     });
   }
 
-  // 10. Minimalist Fast Futuristic Preloader
+  // 6. Minimalist Fast Futuristic Preloader
   const preloader = document.getElementById('sitePreloader');
   const preloaderFill = document.getElementById('preloaderFill');
   const preloaderCounter = document.getElementById('preloaderCounter');
@@ -8958,7 +9036,7 @@
     }
   }
 
-  // 11. FAQ Accordion Interactive Expand / Collapse
+  // 7. FAQ Accordion Interactive Expand / Collapse
   document.querySelectorAll('.faq-trigger-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -8977,7 +9055,7 @@
     });
   });
 
-  // 12. Priority Selector Pills
+  // 8. Priority Selector Pills
   document.querySelectorAll('.priority-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
@@ -8985,7 +9063,7 @@
     });
   });
 
-  // 13. Project Intake Form Submission (Web3Forms -> Gmail Integration)
+  // 9. Project Intake Form Submission (Web3Forms -> Gmail Integration)
   window.handleCaseSubmit = async function(e) {
     e.preventDefault();
     const form = e.target;
@@ -9007,42 +9085,50 @@
       if (data.success) {
         alert("CONFIRMATION: Project brief sent successfully! I have received your email and will get back to you within 24 hours.");
         form.reset();
-        const caseModal = document.getElementById('caseModal');
-        if (caseModal) caseModal.classList.remove('is-active');
+        if (caseModal) {
+          caseModal.classList.remove('is-active');
+          syncBodyScrollLock();
+        }
       } else {
         alert(data.message || "CONFIRMATION: Project brief received! If this is your first time, please make sure your Web3Forms Access Key is set.");
         form.reset();
-        const caseModal = document.getElementById('caseModal');
-        if (caseModal) caseModal.classList.remove('is-active');
+        if (caseModal) {
+          caseModal.classList.remove('is-active');
+          syncBodyScrollLock();
+        }
       }
     } catch (err) {
       alert("CONFIRMATION: Project brief logged! If you need urgent response, you can also reach me on WhatsApp at +91 99165 52231.");
       form.reset();
-      const caseModal = document.getElementById('caseModal');
-      if (caseModal) caseModal.classList.remove('is-active');
+      if (caseModal) {
+        caseModal.classList.remove('is-active');
+        syncBodyScrollLock();
+      }
     } finally {
       btn.innerHTML = originalText;
       btn.disabled = false;
     }
   };
 
-  // 14. Mobile Navigation Toggle
+  // 10. Mobile Navigation Toggle
   const mobileToggle = document.getElementById('mobileToggle');
   const navList = document.querySelector('.nav-link-list');
   if (mobileToggle && navList) {
     mobileToggle.addEventListener('click', () => {
       const isOpen = navList.classList.toggle('is-open');
       mobileToggle.classList.toggle('is-active', isOpen);
+      syncBodyScrollLock();
     });
     navList.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navList.classList.remove('is-open');
         mobileToggle.classList.remove('is-active');
+        syncBodyScrollLock();
       });
     });
   }
 
-  // 15. Project Slides Gallery Controller
+  // 11. Project Slides Gallery Controller
   const projectGalleryData = {
     'namami': {
       title: 'Namami Cafe — Restaurant & Dining Experience',
@@ -9157,7 +9243,10 @@
     }
 
     renderGallerySlide();
-    if (galleryModal) galleryModal.classList.add('is-active');
+    if (galleryModal) {
+      galleryModal.classList.add('is-active');
+      syncBodyScrollLock();
+    }
   }
 
   document.querySelectorAll('.open-gallery-trigger').forEach(trigger => {
@@ -9169,9 +9258,15 @@
   });
 
   if (closeGalleryModal && galleryModal) {
-    closeGalleryModal.addEventListener('click', () => galleryModal.classList.remove('is-active'));
+    closeGalleryModal.addEventListener('click', () => {
+      galleryModal.classList.remove('is-active');
+      syncBodyScrollLock();
+    });
     galleryModal.addEventListener('click', (e) => {
-      if (e.target === galleryModal) galleryModal.classList.remove('is-active');
+      if (e.target === galleryModal) {
+        galleryModal.classList.remove('is-active');
+        syncBodyScrollLock();
+      }
     });
   }
 
@@ -9228,18 +9323,27 @@
     }, { passive: true });
   }
 
+  // Universal Escape key listener
   window.addEventListener('keydown', (e) => {
-    if (!galleryModal || !galleryModal.classList.contains('is-active')) return;
     if (e.key === 'Escape') {
-      galleryModal.classList.remove('is-active');
-    } else if (e.key === 'ArrowRight') {
-      const total = projectGalleryData[currentProjectKey].slides.length;
-      currentSlideIndex = (currentSlideIndex + 1) % total;
-      renderGallerySlide();
-    } else if (e.key === 'ArrowLeft') {
-      const total = projectGalleryData[currentProjectKey].slides.length;
-      currentSlideIndex = (currentSlideIndex - 1 + total) % total;
-      renderGallerySlide();
+      if (galleryModal && galleryModal.classList.contains('is-active')) galleryModal.classList.remove('is-active');
+      if (caseModal && caseModal.classList.contains('is-active')) caseModal.classList.remove('is-active');
+      if (videoModal && videoModal.classList.contains('is-active')) videoModal.classList.remove('is-active');
+      if (navList && navList.classList.contains('is-open')) {
+        navList.classList.remove('is-open');
+        if (mobileToggle) mobileToggle.classList.remove('is-active');
+      }
+      syncBodyScrollLock();
+    } else if (galleryModal && galleryModal.classList.contains('is-active')) {
+      if (e.key === 'ArrowRight') {
+        const total = projectGalleryData[currentProjectKey].slides.length;
+        currentSlideIndex = (currentSlideIndex + 1) % total;
+        renderGallerySlide();
+      } else if (e.key === 'ArrowLeft') {
+        const total = projectGalleryData[currentProjectKey].slides.length;
+        currentSlideIndex = (currentSlideIndex - 1 + total) % total;
+        renderGallerySlide();
+      }
     }
   });
 </script>
