@@ -8558,7 +8558,6 @@
   const closeCaseModal = document.getElementById('closeCaseModal');
   const openCaseButtons = document.querySelectorAll('.open-case-btn');
   const videoModal = document.getElementById('videoModal');
-  const watchIntroBtn = document.getElementById('watchIntroBtn');
   const closeVideoModal = document.getElementById('closeVideoModal');
 
   openCaseButtons.forEach(btn => {
@@ -8575,56 +8574,12 @@
     });
   }
 
-  if (watchIntroBtn && videoModal) {
-    watchIntroBtn.addEventListener('click', () => videoModal.classList.add('is-active'));
-  }
   if (closeVideoModal && videoModal) {
     closeVideoModal.addEventListener('click', () => videoModal.classList.remove('is-active'));
     videoModal.addEventListener('click', (e) => {
       if (e.target === videoModal) videoModal.classList.remove('is-active');
     });
   }
-
-  // 9. Client Reviews 3-Card Carousel Slider
-  const track = document.getElementById('reviewsTrack');
-  const prevBtn = document.getElementById('prevReviewBtn');
-  const nextBtn = document.getElementById('nextReviewBtn');
-  const dotList = document.querySelectorAll('.dot-pill');
-  let currentReviewIndex = 0;
-  const maxReviewIndex = 5;
-
-  function updateReviewSlider() {
-    if (!track) return;
-    const card = track.querySelector('.review-item-card');
-    if (!card) return;
-    const cardWidth = card.offsetWidth;
-    const gap = 24;
-    const shift = currentReviewIndex * (cardWidth + gap);
-    track.style.transform = `translateX(-${shift}px)`;
-
-    dotList.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentReviewIndex);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      currentReviewIndex = (currentReviewIndex + 1) > maxReviewIndex ? 0 : currentReviewIndex + 1;
-      updateReviewSlider();
-    });
-  }
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      currentReviewIndex = (currentReviewIndex - 1) < 0 ? maxReviewIndex : currentReviewIndex - 1;
-      updateReviewSlider();
-    });
-  }
-  dotList.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      currentReviewIndex = idx;
-      updateReviewSlider();
-    });
-  });
 
   // 10. Minimalist 2-Second Futuristic Preloader
   const preloader = document.getElementById('sitePreloader');
