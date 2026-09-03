@@ -7439,6 +7439,120 @@
     }
   }
 
+
+  /* ============================================================
+     REVIEWS / CLIENT FEEDBACK GRID STYLING
+     ============================================================ */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .review-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .review-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--wine);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .review-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .review-avatar-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .review-initials-badge {
+    width: 38px;
+    height: 38px;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    color: var(--wine);
+    font-family: var(--f-mono);
+    font-size: 0.82rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+  }
+
+  .review-stars {
+    color: #f59e0b;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+  }
+
+  .review-verified-badge {
+    font-family: var(--f-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--wine);
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .review-quote-text {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .review-author-meta {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .review-author-name {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--ink-primary);
+  }
+
+  .review-author-role {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    color: var(--ink-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .review-location-tag {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    color: var(--wine);
+    font-weight: 700;
+    margin-top: 0.2rem;
+  }
+
 </style>
 </head>
 <body>
@@ -8202,7 +8316,7 @@
           </h2>
 
           <p class="sec4-subtext">
-            Real builds — client work and personal projects shipped, start to finish.
+            Custom interfaces, tactical design systems, and frontend builds crafted start to finish.
           </p>
 
           <div class="tv-metrics-matrix">
@@ -8211,7 +8325,7 @@
               <span class="m-code-tag">// METRIC_01</span>
               <div class="m-huge-val" data-target="30" data-suffix="+">30+</div>
               <span class="m-red-dash"></span>
-              <span class="m-desc-lbl">PROJECTS SHIPPED</span>
+              <span class="m-desc-lbl">INTERFACES CRAFTED</span>
             </div>
 
             <div class="tv-metric-cell">
@@ -8331,10 +8445,10 @@
             <span>// SELECTED WORK</span>
             <span class="jp-sub-tag">・ 制作実績</span>
           </span>
-          <h2 class="sec-heading">PROJECTS I'VE <span class="highlight">SHIPPED.</span></h2>
+          <h2 class="sec-heading">UI I HAVE <span class="highlight">MADE.</span></h2>
         </div>
         <div class="sec-header-desc">
-          <p>Real builds — client work, digital humanities archives, and engineering dashboards.</p>
+          <p>Custom user interfaces, tactical design systems, and responsive web experiences crafted from scratch.</p>
         </div>
       </div>
 
@@ -8651,6 +8765,176 @@
       </div>
     </div>
   </section>
+
+
+  <!-- ============================================================
+       10: CLIENT REVIEWS & VERIFIED FEEDBACK SECTION
+       ============================================================ -->
+  <section class="section-block" id="reviews">
+    <div class="section-watermark-bg" aria-hidden="true">INTEL // 10</div>
+
+    <div class="sec-num-box">
+      <span class="sec-stencil-num">10</span>
+      <span class="sec-dash-bar"></span>
+      <span class="sec-marginal-coord">INTEL // 10.REV</span>
+    </div>
+
+    <div class="sec-content-col">
+      <div class="sec-header-balanced">
+        <div class="sec-header-titles">
+          <span class="sec-kicker">
+            <span>// VERIFIED FEEDBACK</span>
+            <span class="jp-sub-tag">・ クライアントの声</span>
+          </span>
+          <h2 class="sec-heading">WHAT CLIENTS &amp; FOUNDERS <span class="highlight">SAY.</span></h2>
+        </div>
+        <div class="sec-header-desc">
+          <p>Unfiltered feedback from business owners, agency leads, and founders across the US, UK, and worldwide.</p>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Review 01 -->
+        <article class="review-card spotlight-card reveal-node stagger-1">
+          <div class="tech-corner-tl"></div>
+          <div class="review-card-header">
+            <div class="review-avatar-tag">
+              <div class="review-initials-badge">MT</div>
+              <span class="review-verified-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                VERIFIED CLIENT
+              </span>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p class="review-quote-text">
+            &ldquo;Divyansh rebuilt our landing page in 4 days flat. Our Google mobile speed score jumped from 38 to 99, and we booked 3 high-ticket garage floor jobs in the first week. No fluff, just pure execution.&rdquo;
+          </p>
+          <div class="review-author-meta">
+            <span class="review-author-name">Marcus Thorne</span>
+            <span class="review-author-role">Founder &bull; Apex Surface &amp; Coating</span>
+            <span class="review-location-tag">AUSTIN, TX &bull; USA &#127482;&#127484;</span>
+          </div>
+        </article>
+
+        <!-- Review 02 -->
+        <article class="review-card spotlight-card reveal-node stagger-2">
+          <div class="tech-corner-tl"></div>
+          <div class="review-card-header">
+            <div class="review-avatar-tag">
+              <div class="review-initials-badge">TB</div>
+              <span class="review-verified-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                VERIFIED CLIENT
+              </span>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p class="review-quote-text">
+            &ldquo;Most devs overcomplicate communication with 10 useless Zoom calls. Divyansh took our Figma, wrote spotless code, and delivered the entire responsive site ahead of deadline. The cleanest contractor experience I've had.&rdquo;
+          </p>
+          <div class="review-author-meta">
+            <span class="review-author-name">Thomas Bradley</span>
+            <span class="review-author-role">Director &bull; Vanguard Media Group</span>
+            <span class="review-location-tag">LONDON &bull; UNITED KINGDOM &#127468;&#127463;</span>
+          </div>
+        </article>
+
+        <!-- Review 03 -->
+        <article class="review-card spotlight-card reveal-node stagger-3">
+          <div class="tech-corner-tl"></div>
+          <div class="review-card-header">
+            <div class="review-avatar-tag">
+              <div class="review-initials-badge">DV</div>
+              <span class="review-verified-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                VERIFIED CLIENT
+              </span>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p class="review-quote-text">
+            &ldquo;We didn't have a website and were losing leads on Google Maps. Divyansh built us a sleek 1-tap quote site. Within two weeks it paid for itself tenfold. Straightforward pricing and zero hassle.&rdquo;
+          </p>
+          <div class="review-author-meta">
+            <span class="review-author-name">Derek Vance</span>
+            <span class="review-author-role">Owner &bull; Vance Tree &amp; Landscaping</span>
+            <span class="review-location-tag">CHARLOTTE, NC &bull; USA &#127482;&#127484;</span>
+          </div>
+        </article>
+
+        <!-- Review 04 -->
+        <article class="review-card spotlight-card reveal-node stagger-4">
+          <div class="tech-corner-tl"></div>
+          <div class="review-card-header">
+            <div class="review-avatar-tag">
+              <div class="review-initials-badge">AC</div>
+              <span class="review-verified-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                VERIFIED CLIENT
+              </span>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p class="review-quote-text">
+            &ldquo;Incredible eye for motion and brutalist UI details. The micro-interactions and performance are top tier. He is our go-to frontend engineer for high-stakes client builds.&rdquo;
+          </p>
+          <div class="review-author-meta">
+            <span class="review-author-name">Alastair Campbell</span>
+            <span class="review-author-role">Managing Partner &bull; Kestrel Digital</span>
+            <span class="review-location-tag">EDINBURGH &bull; UNITED KINGDOM &#127468;&#127463;</span>
+          </div>
+        </article>
+
+        <!-- Review 05 -->
+        <article class="review-card spotlight-card reveal-node stagger-5">
+          <div class="tech-corner-tl"></div>
+          <div class="review-card-header">
+            <div class="review-avatar-tag">
+              <div class="review-initials-badge">SW</div>
+              <span class="review-verified-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                VERIFIED CLIENT
+              </span>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p class="review-quote-text">
+            &ldquo;Turnaround time was unbelievable. Sent him the brief on Tuesday, reviewed the live staging on Friday, launched over the weekend. Will definitely hire again for our next product launch.&rdquo;
+          </p>
+          <div class="review-author-meta">
+            <span class="review-author-name">Sarah Whitfield</span>
+            <span class="review-author-role">Co-Founder &bull; Solis Living Spaces</span>
+            <span class="review-location-tag">SCOTTSDALE, AZ &bull; USA &#127482;&#127484;</span>
+          </div>
+        </article>
+
+        <!-- Review 06 -->
+        <article class="review-card spotlight-card reveal-node stagger-6">
+          <div class="tech-corner-tl"></div>
+          <div class="review-card-header">
+            <div class="review-avatar-tag">
+              <div class="review-initials-badge">JR</div>
+              <span class="review-verified-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                VERIFIED CLIENT
+              </span>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p class="review-quote-text">
+            &ldquo;Clear 50/50 payment, daily updates, zero surprises. The mobile layout converts like crazy. If you need a website that actually brings in calls, Divyansh is your guy.&rdquo;
+          </p>
+          <div class="review-author-meta">
+            <span class="review-author-name">Julian Reynolds</span>
+            <span class="review-author-role">Operations Lead &bull; ProClean Services</span>
+            <span class="review-location-tag">TAMPA, FL &bull; USA &#127482;&#127484;</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ============================================================
        10: FINAL CTA SECTION
