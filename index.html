@@ -7593,6 +7593,29 @@
     margin-top: 0.2rem;
   }
 
+  @media (max-width: 960px) {
+    .reviews-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1.2rem !important;
+      margin-top: 1.5rem !important;
+    }
+    .review-card {
+      min-width: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 1.4rem 1.2rem !important;
+    }
+    section[id] {
+      scroll-margin-top: 70px !important;
+    }
+    #cursorDot, #cursorRing, .custom-cursor-dot, .custom-cursor-ring {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  }
 </style>
 </head>
 <body>
