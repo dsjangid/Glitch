@@ -7219,9 +7219,36 @@
 
     /* 10: Final CTA Section & Character 4 */
     .cta-full-stage-grid {
-      grid-template-columns: 1fr !important;
+      display: flex !important;
+      flex-direction: column !important;
       gap: 1.5rem !important;
       width: 100% !important;
+      max-width: 100% !important;
+    }
+    .cta-main-head-col,
+    .cta-action-and-card-col,
+    .cta-spec-box {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+    }
+    .cta-main-head-col .btn-pill-wine {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 0.85rem 1.2rem !important;
+    }
+    .spec-box-bottom-bar {
+      overflow: hidden !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .barcode-graphic-strip {
+      overflow: hidden !important;
+      text-overflow: clip !important;
+      white-space: nowrap !important;
+      flex-shrink: 1 !important;
+      min-width: 0 !important;
     }
     .cta-operative-anchor {
       display: flex !important;
