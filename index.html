@@ -9767,50 +9767,57 @@
     });
   });
 
-  // 9. Project Intake Form Submission (Web3Forms -> Gmail Integration)
-  window.handleCaseSubmit = async function(e) {
+  // 9. Project Intake Form Submission (Direct to WhatsApp: +91 99165 52231)
+  window.handleCaseSubmit = function(e) {
     e.preventDefault();
     const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    
-    btn.innerHTML = '<span style="color:#ffffff;">TRANSMITTING BRIEF TO GMAIL...</span>';
-    btn.disabled = true;
-
     const formData = new FormData(form);
 
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
-      const data = await response.json();
+    const name = (formData.get('name') || '').trim();
+    const contact = (formData.get('contact') || '').trim();
+    const projectType = (formData.get('project_type') || '').trim();
+    const budgetRange = (formData.get('budget_range') || '').trim();
+    const brief = (formData.get('project_brief') || '').trim();
 
-      if (data.success) {
-        alert("CONFIRMATION: Project brief sent successfully! I have received your email and will get back to you within 24 hours.");
-        form.reset();
-        if (caseModal) {
-          caseModal.classList.remove('is-active');
-          syncBodyScrollLock();
-        }
-      } else {
-        alert(data.message || "CONFIRMATION: Project brief received! If this is your first time, please make sure your Web3Forms Access Key is set.");
-        form.reset();
-        if (caseModal) {
-          caseModal.classList.remove('is-active');
-          syncBodyScrollLock();
-        }
+    const messageLines = [
+      `*New Project Brief — DS Portfolio*`,
+      ``,
+      `*Name:* ${name || 'N/A'}`,
+      `*Contact:* ${contact || 'N/A'}`,
+      `*Project Type:* ${projectType || 'N/A'}`,
+      `*Budget Range:* ${budgetRange || 'N/A'}`,
+      ``,
+      `*Project Brief:*`,
+      `${brief || 'N/A'}`
+    ];
+
+    const message = messageLines.join('\n');
+    const waUrl = `https://wa.me/919916552231?text=${encodeURIComponent(message)}`;
+
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span style="color:#ffffff;">REDIRECTING TO WHATSAPP... ↗</span>';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+      }, 2000);
+    }
+
+    try {
+      const newWindow = window.open(waUrl, '_blank');
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        window.location.href = waUrl;
       }
     } catch (err) {
-      alert("CONFIRMATION: Project brief logged! If you need urgent response, you can also reach me on WhatsApp at +91 99165 52231.");
-      form.reset();
-      if (caseModal) {
-        caseModal.classList.remove('is-active');
+      window.location.href = waUrl;
+    }
+
+    form.reset();
+    if (typeof caseModal !== 'undefined' && caseModal && caseModal.classList.contains('is-active')) {
+      caseModal.classList.remove('is-active');
+      if (typeof syncBodyScrollLock === 'function') {
         syncBodyScrollLock();
       }
-    } finally {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
     }
   };
 
