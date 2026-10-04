@@ -7484,82 +7484,40 @@
       -webkit-overflow-scrolling: touch !important;
       box-sizing: border-box !important;
     }
-    .modal-panel-window.is-gallery-window {
-      padding: 1.2rem 0.85rem !important;
+    .glass-gallery-window {
+      padding: 0.35rem 0.35rem 0.45rem !important;
+      border-radius: 16px !important;
+      width: 98vw !important;
+      max-width: 98vw !important;
+      max-height: 94vh !important;
+      gap: 0.3rem !important;
+      background: rgba(246, 244, 239, 0.96) !important;
     }
-    .gallery-hud-header {
-      margin-bottom: 0.8rem !important;
-      padding-bottom: 0.6rem !important;
+    .glass-stage-container {
+      height: 72vh !important;
+      max-height: 72vh !important;
+      border-radius: 12px !important;
+      background: #ffffff !important;
     }
-    .gallery-title-group h3 {
-      font-size: 1.05rem !important;
-      line-height: 1.2 !important;
+    .glass-gallery-title {
+      font-size: 0.84rem !important;
+      max-width: 130px !important;
     }
-    .gallery-stage-container {
-      height: 240px !important;
-      max-height: 40vh !important;
-      touch-action: pan-y !important;
-      position: relative !important;
-      background: #09090b !important;
-      border-radius: 4px !important;
-      overflow: hidden !important;
+    .glass-pill-btn {
+      padding: 0.26rem 0.65rem !important;
+      font-size: 0.66rem !important;
     }
-    .gallery-active-img {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: contain !important;
+    .glass-round-btn {
+      width: 28px !important;
+      height: 28px !important;
     }
-    .gallery-arrow-btn {
-      width: 42px !important;
-      height: 42px !important;
-      font-size: 1.4rem !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      background: rgba(18, 18, 22, 0.85) !important;
-      border: 1px solid var(--wine) !important;
-      color: #ffffff !important;
-      border-radius: 4px !important;
-      z-index: 10 !important;
+    .glass-nav-arrow {
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 1.2rem !important;
     }
-    .gallery-arrow-btn.prev-btn { left: 0.4rem !important; }
-    .gallery-arrow-btn.next-btn { right: 0.4rem !important; }
-    .gallery-bottom-strip {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: stretch !important;
-      gap: 0.8rem !important;
-      margin-top: 0.8rem !important;
-    }
-    .gallery-thumb-row {
-      display: flex !important;
-      flex-direction: row !important;
-      overflow-x: auto !important;
-      -webkit-overflow-scrolling: touch !important;
-      width: 100% !important;
-      gap: 8px !important;
-      padding-bottom: 4px !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-    }
-    .gallery-thumb-btn {
-      width: 56px !important;
-      height: 38px !important;
-      flex-shrink: 0 !important;
-    }
-    .gallery-bottom-strip > div:last-child {
-      width: 100% !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: stretch !important;
-      gap: 0.6rem !important;
-    }
-    .gallery-live-action-btn {
-      width: 100% !important;
-      justify-content: center !important;
-      text-align: center !important;
-      box-sizing: border-box !important;
-    }
+    .glass-nav-arrow.prev-btn { left: 0.4rem !important; }
+    .glass-nav-arrow.next-btn { right: 0.4rem !important; }
   }
 
   @media (max-width: 600px) {
