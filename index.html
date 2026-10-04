@@ -2066,6 +2066,17 @@
     border-color: var(--wine);
     color: #ffffff;
   }
+  .glass-exit-fullsize-btn {
+    display: none;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 50;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+  .glass-stage-container.is-fullsize .glass-exit-fullsize-btn {
+    display: flex;
+  }
 
   /* Glass Stage Container - Minimum Margin & Border Fitting */
   .glass-stage-container {
@@ -9522,6 +9533,10 @@
 
     <!-- Glass Stage (Image Display) -->
     <div class="glass-stage-container" id="galleryStage">
+      <button type="button" class="glass-round-btn close-btn glass-exit-fullsize-btn" id="exitFullsizeBtn" aria-label="Exit full screen (Esc)" title="Exit Full Screen (Esc)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/></svg>
+      </button>
+
       <button type="button" class="glass-nav-arrow prev-btn" id="prevGallerySlide" aria-label="Previous slide">&#8249;</button>
       
       <div class="glass-img-frame">
@@ -9977,11 +9992,11 @@
 
   const galleryModal = document.getElementById('projectGalleryModal');
   const closeGalleryModal = document.getElementById('closeGalleryModal');
+  const galleryFullscreenBtn = document.getElementById('galleryFullscreenBtn');
+  const exitFullsizeBtn = document.getElementById('exitFullsizeBtn');
   const galleryTitle = document.getElementById('galleryTitle');
-  const galleryKicker = document.getElementById('galleryKicker');
   const galleryCounter = document.getElementById('galleryCounter');
   const galleryActiveImg = document.getElementById('galleryActiveImg');
-  const galleryCaption = document.getElementById('galleryCaption');
   const galleryLiveBtn = document.getElementById('galleryLiveBtn');
   const galleryThumbs = document.getElementById('galleryThumbs');
   const prevSlideBtn = document.getElementById('prevGallerySlide');
@@ -9990,15 +10005,62 @@
   let currentProjectKey = 'namami';
   let currentSlideIndex = 0;
 
+  function exitGalleryFullscreen() {
+    const stage = document.getElementById('galleryStage');
+    if (stage) stage.classList.remove('is-fullsize');
+    if (document.fullscreenElement && document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
+      document.webkitExitFullscreen().catch(() => {});
+    }
+  }
+
+  function toggleGalleryFullscreen() {
+    const stage = document.getElementById('galleryStage');
+    if (!stage) return;
+    
+    if (stage.classList.contains('is-fullsize') || document.fullscreenElement || document.webkitFullscreenElement) {
+      exitGalleryFullscreen();
+    } else {
+      stage.classList.add('is-fullsize');
+      if (stage.requestFullscreen) {
+        stage.requestFullscreen().catch(() => {});
+      } else if (stage.webkitRequestFullscreen) {
+        stage.webkitRequestFullscreen().catch(() => {});
+      }
+    }
+  }
+
+  // Handle native browser fullscreen exit (e.g. browser Escape key intercept)
+  const handleFullscreenChange = () => {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      const stage = document.getElementById('galleryStage');
+      if (stage) stage.classList.remove('is-fullsize');
+    }
+  };
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+
+  if (galleryFullscreenBtn) {
+    galleryFullscreenBtn.addEventListener('click', toggleGalleryFullscreen);
+  }
+  if (exitFullsizeBtn) {
+    exitFullsizeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      exitGalleryFullscreen();
+    });
+  }
+  if (galleryActiveImg) {
+    galleryActiveImg.addEventListener('click', toggleGalleryFullscreen);
+  }
+
   function renderGallerySlide() {
     const data = projectGalleryData[currentProjectKey];
     if (!data || !data.slides.length) return;
 
     const currentSlide = data.slides[currentSlideIndex];
     if (galleryTitle) galleryTitle.innerText = data.title;
-    if (galleryKicker) galleryKicker.innerText = data.kicker;
-    if (galleryCounter) galleryCounter.innerText = `SLIDE ${String(currentSlideIndex + 1).padStart(2, '0')} / ${String(data.slides.length).padStart(2, '0')}`;
-    if (galleryCaption) galleryCaption.innerText = currentSlide.caption || '';
+    if (galleryCounter) galleryCounter.innerText = `${currentSlideIndex + 1} / ${data.slides.length}`;
     
     if (galleryActiveImg) {
       galleryActiveImg.style.opacity = '0';
@@ -10007,17 +10069,14 @@
         galleryActiveImg.src = currentSlide.src;
         galleryActiveImg.style.opacity = '1';
         galleryActiveImg.style.transform = 'scale(1)';
-      }, 80);
+      }, 60);
     }
 
     if (galleryLiveBtn) {
       if (data.liveUrl) {
         galleryLiveBtn.href = data.liveUrl;
-        if (data.liveUrl.includes('github.com')) {
-          galleryLiveBtn.innerHTML = 'VIEW SOURCE ON GITHUB ↗';
-        } else {
-          galleryLiveBtn.innerHTML = 'VISIT LIVE SITE ↗';
-        }
+        const isGithub = data.liveUrl.includes('github.com');
+        galleryLiveBtn.innerHTML = `<span>${isGithub ? 'GitHub' : 'Live Site'}</span> <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>`;
         galleryLiveBtn.style.display = 'inline-flex';
       } else {
         galleryLiveBtn.style.display = 'none';
@@ -10025,7 +10084,7 @@
     }
 
     if (galleryThumbs) {
-      galleryThumbs.querySelectorAll('.gallery-thumb-btn').forEach((btn, idx) => {
+      galleryThumbs.querySelectorAll('.glass-dot-btn').forEach((btn, idx) => {
         btn.classList.toggle('is-active', idx === currentSlideIndex);
       });
     }
@@ -10040,15 +10099,15 @@
     if (galleryThumbs) {
       galleryThumbs.innerHTML = '';
       data.slides.forEach((slide, idx) => {
-        const thumbBtn = document.createElement('button');
-        thumbBtn.className = `gallery-thumb-btn ${idx === initialIndex ? 'is-active' : ''}`;
-        thumbBtn.setAttribute('aria-label', `Slide ${idx + 1}`);
-        thumbBtn.innerHTML = `<img src="${slide.src}" alt="Thumb ${idx + 1}">`;
-        thumbBtn.addEventListener('click', () => {
+        const dotBtn = document.createElement('button');
+        dotBtn.type = 'button';
+        dotBtn.className = `glass-dot-btn ${idx === initialIndex ? 'is-active' : ''}`;
+        dotBtn.setAttribute('aria-label', `Slide ${idx + 1}`);
+        dotBtn.addEventListener('click', () => {
           currentSlideIndex = idx;
           renderGallerySlide();
         });
-        galleryThumbs.appendChild(thumbBtn);
+        galleryThumbs.appendChild(dotBtn);
       });
     }
 
@@ -10067,15 +10126,19 @@
     });
   });
 
-  if (closeGalleryModal && galleryModal) {
-    closeGalleryModal.addEventListener('click', () => {
-      galleryModal.classList.remove('is-active');
-      syncBodyScrollLock();
-    });
+  function closeGlassGallery() {
+    exitGalleryFullscreen();
+    if (galleryModal) galleryModal.classList.remove('is-active');
+    syncBodyScrollLock();
+  }
+
+  if (closeGalleryModal) {
+    closeGalleryModal.addEventListener('click', closeGlassGallery);
+  }
+  if (galleryModal) {
     galleryModal.addEventListener('click', (e) => {
       if (e.target === galleryModal) {
-        galleryModal.classList.remove('is-active');
-        syncBodyScrollLock();
+        closeGlassGallery();
       }
     });
   }
