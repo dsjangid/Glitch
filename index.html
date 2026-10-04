@@ -2010,6 +2010,63 @@
     flex-shrink: 0;
   }
 
+  .glass-controls-group {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+  }
+  .glass-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-family: var(--f-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff !important;
+    background: var(--wine);
+    border: 1px solid var(--wine);
+    transition: all 0.2s ease;
+  }
+  .glass-pill-btn:hover {
+    background: var(--wine-bright);
+    border-color: var(--wine-bright);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(110, 26, 43, 0.3);
+  }
+
+  .glass-round-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--line);
+    color: var(--ink-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.2s ease;
+  }
+  .glass-round-btn:hover {
+    background: #ffffff;
+    border-color: var(--ink-primary);
+    color: var(--wine);
+    transform: scale(1.08);
+  }
+  .glass-round-btn.close-btn:hover {
+    background: var(--wine);
+    border-color: var(--wine);
+    color: #ffffff;
+  }
+
   /* Gallery Modal Specifics */
   .modal-panel-window.is-gallery-window {
     max-width: 1080px;
