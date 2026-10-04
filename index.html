@@ -9537,36 +9537,47 @@
   </div>
 </div>
 
-<!-- PROJECT SLIDES GALLERY MODAL -->
-<div class="modal-backdrop-layer" id="projectGalleryModal" aria-hidden="true">
-  <div class="modal-panel-window is-gallery-window">
-    <button class="modal-x-btn" id="closeGalleryModal" aria-label="Close gallery">&times;</button>
+<!-- PROJECT SLIDES GALLERY MODAL (CLEAN GLASSMORPHIC) -->
+<div class="modal-backdrop-layer glass-gallery-backdrop" id="projectGalleryModal" aria-hidden="true">
+  <div class="glass-gallery-window" id="galleryWindow">
     
-    <div class="gallery-hud-header">
-      <div class="gallery-title-group">
-        <span class="sec-kicker" id="galleryKicker" style="font-size:0.68rem; margin-bottom:0.2rem;">// PROJECT INTEL &bull; GALLERY</span>
-        <h3 id="galleryTitle">PROJECT TITLE</h3>
+    <!-- Ultra-Clean Minimal Top Bar -->
+    <div class="glass-gallery-header">
+      <div class="glass-gallery-info">
+        <h3 id="galleryTitle" class="glass-gallery-title">PROJECT</h3>
+        <span class="glass-counter-pill" id="galleryCounter">1 / 4</span>
       </div>
-      <div class="gallery-meta-badges">
-        <span class="gallery-slide-counter" id="galleryCounter">SLIDE 01 / 04</span>
+      
+      <div class="glass-controls-group">
+        <a href="#" target="_blank" rel="noopener" id="galleryLiveBtn" class="glass-pill-btn live-btn" title="Visit Live Site">
+          <span>Live Site</span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <button type="button" id="galleryFullscreenBtn" class="glass-round-btn" aria-label="Toggle Full Size" title="Full size view">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+        <button type="button" class="glass-round-btn close-btn" id="closeGalleryModal" aria-label="Close gallery" title="Close (Esc)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
       </div>
     </div>
 
-    <div class="gallery-stage-container" id="galleryStage">
-      <button class="gallery-arrow-btn prev-btn magnetic-item" data-magnetic="0.3" id="prevGallerySlide" aria-label="Previous slide">&#8249;</button>
-      <img src="" alt="Project Slide" id="galleryActiveImg" class="gallery-active-img">
-      <button class="gallery-arrow-btn next-btn magnetic-item" data-magnetic="0.3" id="nextGallerySlide" aria-label="Next slide">&#8250;</button>
+    <!-- Glass Stage (Image Display) -->
+    <div class="glass-stage-container" id="galleryStage">
+      <button type="button" class="glass-nav-arrow prev-btn" id="prevGallerySlide" aria-label="Previous slide">&#8249;</button>
+      
+      <div class="glass-img-frame">
+        <img src="" alt="Project Slide" id="galleryActiveImg" class="glass-active-img" title="Click to toggle full size view">
+      </div>
+
+      <button type="button" class="glass-nav-arrow next-btn" id="nextGallerySlide" aria-label="Next slide">&#8250;</button>
+
+      <!-- Minimal Floating Navigation Dots -->
+      <div class="glass-dots-bar" id="galleryThumbs">
+        <!-- Rendered via JS -->
+      </div>
     </div>
 
-    <div class="gallery-bottom-strip">
-      <div class="gallery-thumb-row" id="galleryThumbs">
-        <!-- Generated dynamically via JS -->
-      </div>
-      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-        <span class="gallery-caption-text" id="galleryCaption"></span>
-        <a href="#" target="_blank" rel="noopener" id="galleryLiveBtn" class="gallery-live-action-btn">VISIT LIVE SITE ↗</a>
-      </div>
-    </div>
   </div>
 </div>
 
