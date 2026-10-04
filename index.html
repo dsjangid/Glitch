@@ -10199,7 +10199,22 @@
   // Universal Escape key listener
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (galleryModal && galleryModal.classList.contains('is-active')) galleryModal.classList.remove('is-active');
+      const stage = document.getElementById('galleryStage');
+      const isGalleryFullsize = (stage && stage.classList.contains('is-fullsize')) || 
+                                !!document.fullscreenElement || 
+                                !!document.webkitFullscreenElement;
+
+      if (isGalleryFullsize) {
+        e.preventDefault();
+        e.stopPropagation();
+        exitGalleryFullscreen();
+        return;
+      }
+
+      if (galleryModal && galleryModal.classList.contains('is-active')) {
+        closeGlassGallery();
+        return;
+      }
       if (caseModal && caseModal.classList.contains('is-active')) caseModal.classList.remove('is-active');
       if (videoModal && videoModal.classList.contains('is-active')) videoModal.classList.remove('is-active');
       if (navList && navList.classList.contains('is-open')) {
